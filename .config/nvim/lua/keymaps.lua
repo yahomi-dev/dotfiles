@@ -1,17 +1,3 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-
-vim.opt.rtp:prepend(lazypath)
-
 -- encoding
 vim.o.encofing = 'utf-8'
 vim.o.fileencoding = 'utf-8'
@@ -94,14 +80,10 @@ vim.api.nvim_set_keymap('n', 'z', '<Plug>(ff)', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-b>', '<Left>', { noremap = true })
 
+-- colorScheme
+vim.cmd([[colorscheme catppuccin]])
 
 vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
 ]])
-
-require('lazy').setup('plugins')
-
--- colorScheme
--- vim.cmd([[colorscheme habamax]])
-vim.cmd([[colorscheme catppuccin]])
 
