@@ -35,6 +35,7 @@ vim.opt.title = false -- タイトル書き換えない
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 vim.opt.pumheight = 10 -- 補完候補の表示数
+vim.opt.pumblend = 10 -- 補完候補窓の透明度
 vim.opt.termguicolors = true
 
 -- search
