@@ -39,6 +39,13 @@ return {
         require("lspconfig")[server_name].setup {
           on_attach = on_attach, --keyバインドなどの設定を登録
           capabilities = capabilities, --cmpを連携
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { 'vim' }
+              }
+            }
+          }
         }
       end,
     }
