@@ -8,7 +8,7 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 
 PROMPT='
-%F{green}(%~) %f %F{cyan}$vcs_info_msg_0_%f
+%F{green}(%~) %F %F{cyan}$vcs_info_msg_0_%f
 %# '
 
 # alias
