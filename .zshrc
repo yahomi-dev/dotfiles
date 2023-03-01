@@ -8,7 +8,7 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 
 PROMPT='
-%F{green}%~ %f %F{cyan}$vcs_info_msg_0_%f
+%F{green}(%~) %f %F{cyan}$vcs_info_msg_0_%f
 %# '
 
 # alias
@@ -17,6 +17,7 @@ alias l="ll -aa"
 
 alias du='du -h'
 alias .z='nvim ~/.zshrc'
+alias .n='cd ~/.config/nvim && nvim .'
 
 setopt auto_pushd
 setopt pushd_ignore_dups
@@ -33,3 +34,4 @@ function gitmain() {
     git config --global user.name "yahomi-dev"
     git config --global user.email "yahomi.dev@gmail.com"
 }
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"

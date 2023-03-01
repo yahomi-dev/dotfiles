@@ -36,4 +36,5 @@ return {
   'lambdalisue/glyph-palette.vim',
 
   -- others
+   'machakann/vim-sandwich'
 }
