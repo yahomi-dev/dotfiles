@@ -1,10 +1,31 @@
 return {
   'hrsh7th/nvim-cmp',
+  dependencies = {
+    { 'hrsh7th/cmp-nvim-lsp', dependencies = { 'neovim/nvim-lspconfig' } },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'hrsh7th/vim-vsnip' },
+    { 'onsails/lspkind.nvim' },
+  },
   config = function()
     -- Lspkindのrequire
-    local lspkind = require 'lspkind'
+    local lspkind = require('lspkind')
     --補完関係の設定
     local cmp = require('cmp')
+
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' } --ソース類を設定
+      }
+    })
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'path' }, --ソース類を設定
+      },
+    })
 
     cmp.setup({
       snippet = {
@@ -28,6 +49,10 @@ return {
         ['<C-n>'] = cmp.mapping.select_next_item(), --Ctrl+nで補完欄を一つ下に移動
         ['<C-l>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
+        ['<Tab>'] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true
+        }),--Tabで補完を選択確定
         ['<CR>'] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true
@@ -47,19 +72,5 @@ return {
         })
       }
     })
-
-    cmp.setup.cmdline('/', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = 'buffer' } --ソース類を設定
-      }
-    })
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = 'path' }, --ソース類を設定
-      },
-    })
-
   end
 }
