@@ -85,7 +85,6 @@ vim.api.nvim_set_keymap('n', '<Up>', 'gk', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gj', 'j', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gk', 'k', { noremap = true })
 
-
 vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Plug>(lsp)', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'm', '<Plug>(lsp)', { noremap = true })
@@ -93,8 +92,12 @@ vim.api.nvim_set_keymap('n', '<Plug>(ff)', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'z', '<Plug>(ff)', { noremap = true })
 
 -- Emacs like keybinding
+vim.api.nvim_set_keymap('i', '<C-p>', '<Nop>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-n>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-b>', '<Left>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-p>', '<Up>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-n>', '<Down>', { noremap = true })
 
 
 vim.cmd([[
