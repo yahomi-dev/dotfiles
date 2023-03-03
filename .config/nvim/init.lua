@@ -104,6 +104,7 @@ vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
 ]])
 
+
 require('lazy').setup('plugins')
 
 -- colorScheme

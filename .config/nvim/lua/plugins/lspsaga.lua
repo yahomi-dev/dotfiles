@@ -1,5 +1,9 @@
 return {
   'tami5/lspsaga.nvim',
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+    'nvim-treesitter/nvim-treesitter'
+  },
   config = function()
     require('lspsaga').setup()
 
@@ -37,6 +41,8 @@ return {
     vim.keymap.set({ 'n' }, 'zi', '<Cmd>Telescope lsp_implementations<CR>')
     vim.keymap.set({ 'n' }, 'zt', '<Cmd>Telescope lsp_type_definitions<CR>')
     vim.keymap.set({ 'n' }, 'zr', '<Cmd>Telescope lsp_references<CR>')
+    vim.keymap.set({ 'n' }, 'gr', '<cmd>Lspsaga rename<CR>')
+
 
   end
 }
