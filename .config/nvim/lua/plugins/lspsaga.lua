@@ -38,10 +38,10 @@ return {
     vim.keymap.set({ 'n' }, 'zq', '<Cmd>Telescope diagnostics<CR>')
     vim.keymap.set({ 'n' }, ',[', require('lspsaga.diagnostic').navigate('next'))
     vim.keymap.set({ 'n' }, ',]', require('lspsaga.diagnostic').navigate('prev'))
-    vim.keymap.set({ 'n' }, 'zi', '<Cmd>Telescope lsp_implementations<CR>')
-    vim.keymap.set({ 'n' }, 'zt', '<Cmd>Telescope lsp_type_definitions<CR>')
-    vim.keymap.set({ 'n' }, 'zr', '<Cmd>Telescope lsp_references<CR>')
-    vim.keymap.set({ 'n' }, 'gr', '<cmd>Lspsaga rename<CR>')
+    vim.keymap.set({ 'n' }, ';i', '<Cmd>Telescope lsp_implementations<CR>')
+    vim.keymap.set({ 'n' }, ';t', '<Cmd>Telescope lsp_type_definitions<CR>')
+    vim.keymap.set({ 'n' }, ';r', '<Cmd>Telescope lsp_references<CR>')
+    vim.keymap.set({ 'n' }, ';r', '<cmd>Lspsaga rename<CR>')
 
 
   end

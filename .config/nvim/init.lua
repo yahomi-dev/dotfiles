@@ -1,3 +1,5 @@
+vim.cmd("autocmd!")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -30,8 +32,9 @@ vim.opt.showmatch = true -- 括弧の対応をハイライト
 vim.opt.matchtime = 1 -- 括弧の対を見つけるミリ秒数
 vim.opt.showcmd = true -- 入力中のコマンドを表示
 vim.opt.number = true -- 行番号表示
+vim.opt.cursorline = true -- カレント行を強調
 vim.opt.wrap = true -- 画面幅で折り返す
-vim.opt.title = false -- タイトル書き換えない
+vim.opt.title = true -- タイトルを書き換える
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 vim.opt.pumheight = 10 -- 補完候補の表示数
@@ -99,6 +102,11 @@ vim.api.nvim_set_keymap('i', '<C-b>', '<Left>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-p>', '<Up>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-n>', '<Down>', { noremap = true })
 
+-- New tab
+vim.api.nvim_set_keymap('n', 'te', ':tabedit', { noremap = true })
+
+-- Split window
+vim.api.nvim_set_keymap('n', 'vs', ':vsplit<Return><C-w>w', { noremap = true })
 
 vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
