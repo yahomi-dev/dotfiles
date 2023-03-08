@@ -117,5 +117,7 @@ require('lazy').setup('plugins')
 
 -- colorScheme
 -- vim.cmd([[colorscheme habamax]])
-vim.cmd([[colorscheme catppuccin]])
+-- vim.cmd([[colorscheme catppuccin]])
+
+vim.cmd.colorscheme('catppuccin')
 

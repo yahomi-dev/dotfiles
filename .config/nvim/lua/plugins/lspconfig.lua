@@ -12,10 +12,10 @@ return {
       -- ほかのLSPプラグインを使う場合（例：Lspsaga）は必要ないこともあります
 
       -- local opts = { noremap = true, silent = true }
-      -- 
+       
       -- local set = vim.keymap.set
       -- set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-      -- set("n", "mk", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+      -- set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
       -- set("n", "zq", "<cmd>lua vim.lsp.diagnostic.setloclist()<CR>", opts)
       -- set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
       -- set("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
@@ -25,6 +25,14 @@ return {
       -- set("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
       -- set("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
+    -- vim.keymap.set({ 'n' }, 'K', show_documentation)
+    -- vim.keymap.set({ 'n' }, 'zq', '<Cmd>Telescope diagnostics<CR>')
+    -- vim.keymap.set({ 'n' }, ',[', require('lspsaga.diagnostic').navigate('next'))
+    -- vim.keymap.set({ 'n' }, ',]', require('lspsaga.diagnostic').navigate('prev'))
+    -- vim.keymap.set({ 'n' }, ';i', '<Cmd>Telescope lsp_implementations<CR>')
+    -- vim.keymap.set({ 'n' }, ';t', '<Cmd>Telescope lsp_type_definitions<CR>')
+    -- vim.keymap.set({ 'n' }, ';r', '<Cmd>Telescope lsp_references<CR>')
+    -- vim.keymap.set({ 'n' }, ';r', '<cmd>Lspsaga rename<CR>')
 
     end
 
