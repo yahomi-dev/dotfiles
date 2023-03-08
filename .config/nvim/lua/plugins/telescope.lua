@@ -8,7 +8,10 @@ return {
     require('telescope').setup({
       defaults ={
         layout_strategy = 'vertical',
-        layout_config = { height = 0.9,width = 0.9 },
+        layout_config = {
+          height = 0.9,
+          width = 0.9,
+        },
         mappings = {
           n = {
             ['q'] = actions.close
