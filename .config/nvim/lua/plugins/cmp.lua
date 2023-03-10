@@ -1,12 +1,17 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
-    { 'hrsh7th/cmp-nvim-lsp', dependencies = { 'neovim/nvim-lspconfig' } },
+    { 'f3fora/cmp-spell' },
     { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/vim-vsnip' },
+    { 'hrsh7th/cmp-nvim-lsp', dependencies = { 'neovim/nvim-lspconfig' } },
+    { 'hrsh7th/cmp-nvim-lua' },
+    { 'hrsh7th/cmp-path' },
+    { 'kdheepak/cmp-latex-symbols' },
+    { 'lukas-reineke/cmp-under-comparator' },
     { 'onsails/lspkind.nvim' },
+    { 'ray-x/cmp-treesitter' },
+    { 'saadparwaiz1/cmp_luasnip' },
   },
   config = function()
     -- Lspkindのrequire
@@ -38,17 +43,25 @@ return {
         documentation = cmp.config.window.bordered(),
       },
       sources = {
-        { name = "nvim_lsp" },
-        { name = 'vsnip' }, -- For vsnip users.
         { name = "buffer" },
+        { name = "nvim_lsp" },
         { name = "path" },
+        { name = 'buffer' },
+        { name = 'latex_symbols' },
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
+        { name = 'nvim_lua' },
+        { name = 'path' },
+        { name = 'spell' },
+        { name = 'treesitter' },
       },
       mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
-        ['<C-n>'] = cmp.mapping.select_next_item(), --Ctrl+nで補完欄を一つ下に移動
-        ['<C-l>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-p>'] = cmp.mapping.select_prev_item(), --補完欄を一つ上に移動
+        ['<C-n>'] = cmp.mapping.select_next_item(), --補完欄を一つ下に移動
+        ['<C-u>'] = cmp.mapping.scroll_docs(-5), -- docsを上にスクロール
+        ['<C-d>'] = cmp.mapping.scroll_docs(5), -- docsを下にスクロール
+        ['<C-e>'] = cmp.mapping.abort(), -- 補完候補を閉じる(補完しない)
         ['<Tab>'] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true
