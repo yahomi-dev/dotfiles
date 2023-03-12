@@ -12,6 +12,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+require('base')
+
+-- ===============================
 
 require('keymaps')
 
