@@ -11,7 +11,6 @@ return {
     { 'lukas-reineke/cmp-under-comparator' },
     { 'onsails/lspkind.nvim' },
     { 'ray-x/cmp-treesitter' },
-    { 'saadparwaiz1/cmp_luasnip' },
   },
   config = function()
     -- Lspkindのrequire
@@ -33,11 +32,6 @@ return {
     })
 
     cmp.setup({
-      snippet = {
-        expand = function(args)
-          vim.fn['vsnip#anonymous'](args.body)
-        end,
-      },
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
