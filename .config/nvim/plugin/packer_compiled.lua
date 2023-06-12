@@ -99,10 +99,10 @@ _G.packer_plugins = {
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/everforest",
     url = "https://github.com/sainnhe/everforest"
   },
-  ["fern-renderer-nerdfont.vim"] = {
+  ["fern-renderer-web-devicons.nvim"] = {
     loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/fern-renderer-nerdfont.vim",
-    url = "https://github.com/lambdalisue/fern-renderer-nerdfont.vim"
+    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/fern-renderer-web-devicons.nvim",
+    url = "https://github.com/TheLeoP/fern-renderer-web-devicons.nvim"
   },
   ["fern.vim"] = {
     loaded = true,
@@ -133,11 +133,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["nerdfont.vim"] = {
-    loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/nerdfont.vim",
-    url = "https://github.com/lambdalisue/nerdfont.vim"
   },
   ["nordic.nvim"] = {
     loaded = true,
@@ -218,11 +213,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/vim-prettier",
     url = "https://github.com/prettier/vim-prettier"
-  },
-  ["vim-pug"] = {
-    loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/vim-pug",
-    url = "https://github.com/digitaltoad/vim-pug"
   },
   ["vim-sandwich"] = {
     loaded = true,

@@ -29,10 +29,10 @@ packer.startup(function(use)
 
   -- Fern.vim
   use 'lambdalisue/fern.vim'
-  use 'lambdalisue/nerdfont.vim'
-  use 'lambdalisue/fern-renderer-nerdfont.vim'
+  -- use 'lambdalisue/nerdfont.vim'
+  -- use 'lambdalisue/fern-renderer-nerdfont.vim'
   use 'lambdalisue/glyph-palette.vim'
-  -- use 'TheLeoP/fern-renderer-web-devicons.nvim'
+  use 'TheLeoP/fern-renderer-web-devicons.nvim'
 
   use 'kyazdani42/nvim-web-devicons'
 
@@ -41,7 +41,6 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  use 'digitaltoad/vim-pug'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
