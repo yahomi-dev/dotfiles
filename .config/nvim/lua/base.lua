@@ -12,6 +12,7 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 
 -- visual
+vim.opt.list = false
 vim.opt.number = true -- 行番号表示
 vim.opt.laststatus = 3 -- vs時ステータスラインが分割しないように
 vim.opt.display = 'lastline' -- 長い行が@で省略されないように
@@ -30,6 +31,7 @@ vim.opt.termguicolors = true
 vim.opt.mouse = {} -- マウス操作を無効化
 
 -- search
+vim.opt.wrapscan = false -- ファイル末尾まで検索後、上に戻らないように
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -43,15 +45,30 @@ vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 50
 
 vim.opt.confirm = true
-vim.opt.undofile = false -- アンドゥファイルを作らない
+vim.opt.undofile = true -- アンドゥファイルを作る
+vim.cmd([[
+set undodir=~/.vim/undodir
+]])
 vim.opt.backup = false   -- バックアップ取らない
 vim.opt.swapfile = false -- スワップファイル作らない
 vim.opt.hidden = false -- 編集中の場合、他のファイルを開けないように
 vim.opt.autoread = true -- 他で書き換えられたら自動で読み直す
 vim.opt.winblend = 5
 
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank { timeout=500}')
+vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup = "visual", timeout=500}')
 
+vim.cmd([[
+  let @b = "/{\\<CR>jV/\\n\\n\\<CR>:sort i\\<CR>"
+  command! SortCSS normal @b
+]])
+
+
+
+vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohl<CR>', { noremap = true, silent = true})
+
+vim.cmd([[
+  command! SortCSSProperties :call SortCSSProperties()
+]])
 
 
 ---------------------------------------------------------------------------------------------------+
@@ -108,7 +125,6 @@ vim.api.nvim_set_keymap("v", "<Leader>j", ":s/\\({\\zs\\s\\|,\\zs\\s\\|\\s\\ze\\
 vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
 ]])
-
 
 -- colorScheme
 vim.cmd.colorscheme('habamax')

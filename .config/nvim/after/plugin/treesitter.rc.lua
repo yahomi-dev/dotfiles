@@ -16,6 +16,7 @@ treesitter.setup {
     'typescript',
     'vim',
     'vue',
+    'toml',
     'yaml',
   },
 

@@ -1,5 +1,10 @@
 require('base');
 
+if vim.g.vscode == 1 then
+  require('vscode')
+  return
+end
+
 require('plugins');
 
 vim.cmd([[

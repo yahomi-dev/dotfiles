@@ -141,7 +141,7 @@ let g:everforest_background = 'dark'
 let g:everforest_diagnostic_text_highlight = 0 
 let g:everforest_better_performance = 1
 let g:everforest_transparent_background = 1
-colorscheme catppuccin
+colorscheme everforest
 
 ]])
 
