@@ -1,7 +1,7 @@
 
 -- encoding
-vim.o.encofing = 'utf-8'
-vim.o.fileencoding = 'utf-8'
+vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
 vim.scriptencoding = 'utf-8'
 
 -- visual
@@ -9,7 +9,9 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.autoindent = true
+vim.opt.signcolumn = 'yes'
 
+vim.opt.updatetime = 500
 vim.opt.laststatus = 3 -- ステータスラインが分割しないように
 vim.opt.display = 'lastline' -- 長い行も一行で収まるように
 vim.opt.showmode = false

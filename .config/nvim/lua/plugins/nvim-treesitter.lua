@@ -9,8 +9,12 @@ return {
         'vue',
         'vim',
         'lua',
+        'markdown',
+        'css',
+        'scss',
       },
       ignore_install = { 'html' },
+      additional_vim_regex_highlighting = false, -- catpuucin用
       highlight = {
         enable = true,
         disable = {},
@@ -19,7 +23,7 @@ return {
         enable =true
       },
       autotag = {
-        enable = false,
+        enable = true,
       }
     }
   end

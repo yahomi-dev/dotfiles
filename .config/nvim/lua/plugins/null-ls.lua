@@ -16,7 +16,7 @@ return {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.prettier.with({
-          filetypes = { 'javascript', 'lua' },
+          filetypes = { 'javascript', 'lua', 'vue', 'typescript' },
           extra_args = prettier_args
         }),
       },

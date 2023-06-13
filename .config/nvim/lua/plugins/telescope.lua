@@ -6,11 +6,17 @@ return {
     local builtin = require('telescope.builtin')
 
     require('telescope').setup({
-      defaults ={
+      defaults = {
+        -- sorting_strategy = 'ascending',
+        winblend = 4,
         layout_strategy = 'vertical',
         layout_config = {
           height = 0.9,
           width = 0.9,
+        },
+        file_ignore_patterns = { --検索対象に含めないファイルを指定
+          "^.git/",
+          "^node_modules/",
         },
         mappings = {
           n = {
