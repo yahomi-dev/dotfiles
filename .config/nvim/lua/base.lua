@@ -20,7 +20,7 @@ vim.opt.showmode = false -- モード表示をOFF(luaLineにて表示)
 vim.opt.showmatch = true -- 括弧の対応をハイライト
 vim.opt.matchtime = 1 -- 括弧の対を見つけるミリ秒数
 vim.opt.showcmd = true -- 入力中のコマンドを表示
-vim.opt.cursorline = true -- カレント行を強調
+vim.opt.cursorline = false -- カレント行を強調 trueだと重くなる
 vim.opt.wrap = true -- 画面幅で折り返す
 vim.opt.title = false -- タイトルを書き換えないように
 vim.opt.scrolloff = 5 -- スクロール時の上下padding付与
@@ -65,11 +65,6 @@ vim.cmd([[
 
 
 vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohl<CR>', { noremap = true, silent = true})
-
-vim.cmd([[
-  command! SortCSSProperties :call SortCSSProperties()
-]])
-
 
 ---------------------------------------------------------------------------------------------------+
 -- Commands \ Modes | Normal | Insert | Command | Visual | Select | Operator | Terminal | Lang-Arg |
@@ -127,7 +122,7 @@ vim.cmd([[
 ]])
 
 -- colorScheme
-vim.cmd.colorscheme('habamax')
+-- vim.cmd.colorscheme('habamax')
 
 -- vim.cmd.colorscheme('catppuccin')
 

@@ -94,10 +94,10 @@ _G.packer_plugins = {
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
-  everforest = {
+  ["fern-renderer-nerdfont.vim"] = {
     loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/everforest",
-    url = "https://github.com/sainnhe/everforest"
+    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/fern-renderer-nerdfont.vim",
+    url = "https://github.com/lambdalisue/fern-renderer-nerdfont.vim"
   },
   ["fern-renderer-web-devicons.nvim"] = {
     loaded = true,
@@ -134,10 +134,10 @@ _G.packer_plugins = {
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["nordic.nvim"] = {
+  ["nerdfont.vim"] = {
     loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/nordic.nvim",
-    url = "https://github.com/AlexvZyl/nordic.nvim"
+    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/nerdfont.vim",
+    url = "https://github.com/lambdalisue/nerdfont.vim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -148,11 +148,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
-  },
-  ["nvim-hlslens"] = {
-    loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/nvim-hlslens",
-    url = "https://github.com/kevinhwang91/nvim-hlslens"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -204,10 +199,10 @@ _G.packer_plugins = {
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-fugitive"] = {
+  ["toggleterm.nvim"] = {
     loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
+    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["vim-prettier"] = {
     loaded = true,
@@ -218,11 +213,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/vim-sandwich",
     url = "https://github.com/machakann/vim-sandwich"
-  },
-  ["vimdoc-ja"] = {
-    loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/vimdoc-ja",
-    url = "https://github.com/vim-jp/vimdoc-ja"
   },
   winresizer = {
     loaded = true,

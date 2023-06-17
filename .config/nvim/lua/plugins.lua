@@ -12,13 +12,10 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Common Plugin(Lua)
-  use 'vim-jp/vimdoc-ja'
   use 'nvim-lua/plenary.nvim'
   use 'antoinemadec/FixCursorHold.nvim'
 
   -- colorscheme
-  use 'sainnhe/everforest'
-  use 'AlexvZyl/nordic.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
 
   -- coc.nvim
@@ -29,8 +26,8 @@ packer.startup(function(use)
 
   -- Fern.vim
   use 'lambdalisue/fern.vim'
-  -- use 'lambdalisue/nerdfont.vim'
-  -- use 'lambdalisue/fern-renderer-nerdfont.vim'
+  use 'lambdalisue/nerdfont.vim'
+  use 'lambdalisue/fern-renderer-nerdfont.vim'
   use 'lambdalisue/glyph-palette.vim'
   use 'TheLeoP/fern-renderer-web-devicons.nvim'
 
@@ -53,7 +50,6 @@ packer.startup(function(use)
   -- Coding Support
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
-  use 'kevinhwang91/nvim-hlslens'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'numToStr/Comment.nvim'
   use 'norcalli/nvim-colorizer.lua'
@@ -68,8 +64,11 @@ packer.startup(function(use)
   use 'prettier/vim-prettier'
 
   -- Git Integration
-  -- use 'dinhhuy258/git.nvim'
-  use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
 
+  -- terminal Integration
+  use {
+      "akinsho/toggleterm.nvim",
+      tag = '*',
+  }
 end)
