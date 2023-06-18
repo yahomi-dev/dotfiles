@@ -41,10 +41,6 @@ packer.startup(function(use)
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
-  use {
-    "nvim-telescope/telescope-frecency.nvim",
-    requires = {"kkharji/sqlite.lua"}
-  }
   use 'fannheyward/telescope-coc.nvim'
 
   -- Coding Support

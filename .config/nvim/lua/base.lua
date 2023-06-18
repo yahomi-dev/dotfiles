@@ -55,8 +55,6 @@ vim.opt.hidden = false -- 編集中の場合、他のファイルを開けない
 vim.opt.autoread = true -- 他で書き換えられたら自動で読み直す
 vim.opt.winblend = 5
 
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup = "visual", timeout=500}')
-
 vim.cmd([[
   let @b = "/{\\<CR>jV/\\n\\n\\<CR>:sort i\\<CR>"
   command! SortCSS normal @b

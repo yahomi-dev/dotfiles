@@ -1,11 +1,11 @@
 vim.g.coc_global_extensions = {
-  'coc-tsserver',
   'coc-css',
-  'coc-vetur',
   'coc-eslint',
+  'coc-lists',
   'coc-prettier',
-  'coc-fzf-preview',
-  'coc-lists'
+  'coc-rust-analyzer',
+  'coc-tsserver',
+  'coc-vetur',
 }
 
 -- Some servers have issues with backup files, see #649

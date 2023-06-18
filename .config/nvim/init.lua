@@ -14,3 +14,4 @@ vim.cmd([[
   augroup end
 ]])
 
+require('autocmds');

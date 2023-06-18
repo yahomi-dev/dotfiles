@@ -179,20 +179,10 @@ _G.packer_plugins = {
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
   },
-  ["sqlite.lua"] = {
-    loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/sqlite.lua",
-    url = "https://github.com/kkharji/sqlite.lua"
-  },
   ["telescope-coc.nvim"] = {
     loaded = true,
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/telescope-coc.nvim",
     url = "https://github.com/fannheyward/telescope-coc.nvim"
-  },
-  ["telescope-frecency.nvim"] = {
-    loaded = true,
-    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/telescope-frecency.nvim",
-    url = "https://github.com/nvim-telescope/telescope-frecency.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

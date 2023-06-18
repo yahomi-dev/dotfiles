@@ -21,7 +21,6 @@ telescope.setup({
   },
 })
 
-telescope.load_extension("frecency") --frecency search
 telescope.load_extension("coc")      -- coc integration
 
 -- file search
@@ -67,5 +66,3 @@ vim.keymap.set("n", "gd", "<cmd>Telescope coc definitions<cr>", { noremap = true
 vim.keymap.set("n", "gy", "<cmd>Telescope coc type_definitions<cr>", { noremap = true, silent = true })
 -- diagnostics
 vim.keymap.set("n", "<leader>a", "<cmd>Telescope coc diagnostics<cr>", {noremap = true, silent = true })
---頻度検索
-vim.keymap.set("n", "<leader>l", "<cmd>telescope.extensions.frecency.frecency()<CR>", { noremap = true, silent = true })
