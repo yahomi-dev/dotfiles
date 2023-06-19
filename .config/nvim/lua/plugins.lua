@@ -17,6 +17,7 @@ packer.startup(function(use)
 
   -- colorscheme
   use { "catppuccin/nvim", as = "catppuccin" }
+  use { "cocopon/iceberg.vim" }
 
   -- coc.nvim
   use {'neoclide/coc.nvim', branch = 'release'}

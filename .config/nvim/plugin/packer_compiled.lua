@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
   },
+  ["iceberg.vim"] = {
+    loaded = true,
+    path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/iceberg.vim",
+    url = "https://github.com/cocopon/iceberg.vim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/yahomi/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
