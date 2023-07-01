@@ -37,8 +37,18 @@ return {
   -- color scheme
   { 'catppuccin/nvim' },
 
+  {
+    'andersevenrud/nordic.nvim',
+    config = function()
+      require('plugins.config.nordic')
+    end,
+
+  },
+
+  { 'arcticicestudio/nord-vim' },
+
   -- status line {{{
-  { 
+  {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
@@ -64,7 +74,7 @@ return {
   -- }}}
 
   -- Git {{{
-  { 
+  {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('plugins.config.gitsigns')
