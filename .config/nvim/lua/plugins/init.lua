@@ -32,9 +32,22 @@ return {
 
   { 'norcalli/nvim-colorizer.lua' },
 
+  -- 括弧補完、オブジェクト展開
+  {
+    'hrsh7th/nvim-insx',
+    config = function()
+      require('insx.preset.standard').setup {
+        cmdline = {
+          enabled = true,
+        },
+      }
+    end,
+  },
+
+  { 'dkarter/bullets.vim' },
   -- }}}
 
-  -- color scheme
+  -- color scheme {{{
   { 'catppuccin/nvim' },
 
   {
@@ -46,6 +59,7 @@ return {
   },
 
   { 'arcticicestudio/nord-vim' },
+  -- }}}
 
   -- status line {{{
   {
@@ -61,14 +75,10 @@ return {
 
   -- motion {{{
   {
-    'phaazon/hop.nvim',
-    version = 'v2.x',
-    event = 'BufReadPost',
-    keys = {
-      { '<leader><leader>', '<cmd>HopWord<cr>', mode = { 'n', 'v' } },
-    },
+    'folke/flash.nvim',
+    event = 'VeryLazy',
     config = function()
-      require('plugins.config.hop')
+      require('flash').setup()
     end,
   },
   -- }}}
