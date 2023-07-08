@@ -21,7 +21,7 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('indent_blankline').setup {}
-    end
+    end,
   },
 
   { 'numToStr/Comment.nvim' },
@@ -55,7 +55,6 @@ return {
     config = function()
       require('plugins.config.nordic')
     end,
-
   },
 
   { 'arcticicestudio/nord-vim' },
@@ -123,7 +122,7 @@ return {
       require('plugins.config.mason')
     end,
   },
-  
+
   {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -193,7 +192,7 @@ return {
   -- }}}
 
   -- filer
-  { 
+  {
     'lambdalisue/fern.vim',
     config = function()
       require('plugins.config.fern')
@@ -204,8 +203,8 @@ return {
   {
     'lambdalisue/fern-renderer-nerdfont.vim',
     dependencies = {
-      'lambdalisue/fern.vim'
-    }
+      'lambdalisue/fern.vim',
+    },
   },
   { 'lambdalisue/glyph-palette.vim' },
 
@@ -215,7 +214,7 @@ return {
     'windwp/nvim-autopairs',
     config = function()
       require('plugins.config.nvim-autopairs')
-    end
+    end,
   },
 
   {
