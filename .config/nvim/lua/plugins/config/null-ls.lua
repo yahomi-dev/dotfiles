@@ -1,19 +1,10 @@
 local null_ls = require('null-ls')
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
--- vscodeでの設定との差異があるので直接指定
-local prettier_args = {
-  '--print-width', '120',
-  '--trailing-comma', 'none',
-  '--single-quote',
-  '--arrow-parens', 'avoid',
-}
-
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettier.with({
       filetypes = { 'javascript', 'lua', 'vue', 'typescript' },
-      extra_args = prettier_args
     }),
   },
   command = 'prettier',
