@@ -1,6 +1,6 @@
 require('mason').setup {
   ui = {
-    border = 'single',
+    border = 'rounded',
     icons = {
       package_installed = '✓',
       package_pending = '➜',
@@ -19,19 +19,32 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 local mason_lspconfig = require('mason-lspconfig')
 
-mason_lspconfig.setup {}
+mason_lspconfig.setup {
+  ensure_installed = {
+    'lua_ls',
+    'rust_analyzer',
+    'cssls',
+    'tsserver',
+    'vuels',
+    'volar',
+  },
+}
+
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require("lspconfig")[server_name].setup {
-      on_attach = on_attach, --keyバインドなどの設定を登録
-      capabilities = capabilities, --cmpを連携
+    require('lspconfig')[server_name].setup {
+      on_attach = on_attach, -- keyバインドなどの設定を登録
+      capabilities = capabilities, -- cmpを連携
       settings = {
         Lua = {
           diagnostics = {
-            globals = { 'vim' }
-          }
-        }
-      }
+            globals = { 'vim' },
+          },
+          format = {
+            enable = false, -- Use StyLua
+          },
+        },
+      },
     }
   end,
 }

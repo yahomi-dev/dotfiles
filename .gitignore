@@ -1,0 +1,11 @@
+# Mac
+.DS_Store
+
+# Vim
+*.swp
+
+# packer.nvim
+packer_compiled.lua
+
+# Lua
+.luarc.json
