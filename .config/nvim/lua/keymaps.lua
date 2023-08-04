@@ -39,6 +39,9 @@ vim.api.nvim_set_keymap('i', '<C-b>', '<Left>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-p>', '<Up>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-n>', '<Down>', { noremap = true })
 
+-- CRの入力をLFに
+vim.api.nvim_set_keymap('i', '<C-m>', '<CR>', { noremap = true })
+
 -- New tab
 vim.api.nvim_set_keymap('n', 'te', ':tabedit', { noremap = true })
 
