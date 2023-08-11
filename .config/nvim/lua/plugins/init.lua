@@ -28,8 +28,6 @@ return {
 
   { 'stevearc/dressing.nvim' },
 
-  { 'vim-jp/vimdoc-ja' },
-
   { 'norcalli/nvim-colorizer.lua' },
 
   -- 括弧補完、オブジェクト展開
@@ -222,5 +220,10 @@ return {
     config = function()
       require('plugins.config.dial')
     end,
+  },
+
+  -- create colorScheme
+  {
+    'vim/colorschemes',
   },
 }
