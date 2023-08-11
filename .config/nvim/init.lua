@@ -1,3 +1,6 @@
+-- 高速化
+if vim.loader then vim.loader.enable() end
+
 require('options')
 
 require('keymaps')
