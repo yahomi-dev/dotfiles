@@ -55,7 +55,6 @@ return {
     end,
   },
 
-  { 'arcticicestudio/nord-vim' },
   -- }}}
 
   -- status line {{{
@@ -220,6 +219,18 @@ return {
     config = function()
       require('plugins.config.dial')
     end,
+  },
+
+  {
+    'yahomi-dev/case-shift.nvim',
+    config = function()
+      require('plugins.config.case-shift')
+    end,
+  },
+
+  {
+    'shaunsingh/nord.nvim',
+    name = 'nord'
   },
 
   -- create colorScheme

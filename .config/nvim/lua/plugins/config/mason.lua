@@ -25,7 +25,6 @@ mason_lspconfig.setup {
     'rust_analyzer',
     'cssls',
     'tsserver',
-    'vuels',
     'volar',
   },
 }

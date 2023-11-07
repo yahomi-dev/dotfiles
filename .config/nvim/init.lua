@@ -26,7 +26,6 @@ require('lazy').setup('plugins')
 -- vim.cmd.colorscheme('habamax')
 
 vim.cmd.colorscheme('catppuccin')
--- vim.cmd.colorscheme('nord')
 
 vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC

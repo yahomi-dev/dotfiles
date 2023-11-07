@@ -43,3 +43,4 @@ function gitmain() {
     git config --global user.email "yahomi.dev@gmail.com"
 }
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH=$HOME/bin:$PATH
