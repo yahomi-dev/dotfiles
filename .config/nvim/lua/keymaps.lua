@@ -48,3 +48,6 @@ vim.api.nvim_set_keymap('n', 'te', ':tabedit', { noremap = true })
 -- Split window
 vim.api.nvim_set_keymap('n', 'vs', ':vsplit<Return><C-w>w', { noremap = true })
 
+-- switch case
+vim.api.nvim_set_keymap('x', '<Space>j', ':s/\\<\\@!\\([A-Z]\\)/-\\l\\1/g<CR>', { noremap = true })
+
