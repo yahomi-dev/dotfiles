@@ -239,7 +239,7 @@ return {
     'petertriho/nvim-scrollbar',
     config = function()
       local scrollbar = require('scrollbar')
-      scrollbar.setup {
+      scrollbar.setup ({
         show_in_active_only = true,
         handle = {
           blend = 0,
@@ -256,7 +256,7 @@ return {
           Misc = { color = '#bb7744' },
           Cursor = { color = '#222222', text = ' ' },
         },
-      }
+      })
     end,
   },
 
