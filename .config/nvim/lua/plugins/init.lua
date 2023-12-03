@@ -6,15 +6,37 @@ return {
   -- common plugins {{{
   { 'nvim-lua/plenary.nvim', lazy = true },
 
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
+
+  { 'stevearc/dressing.nvim' },
+  -- }}}
+
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    lazy = false,
     config = function()
       require('plugins.config.nvim-treesitter')
     end,
   },
 
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
+  {
+    -- コメントをいい感じに
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('ts_context_commentstring').setup()
+    end,
+  },
+
+  -- テキストオブジェクト
+  -- {
+  --   'nvim-treesitter/nvim-treesitter-textobjects',
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  --   config = function()
+  --     require('plugins.config.treesitter-textobjects')
+  --   end,
+  -- },
 
   {
     'lukas-reineke/indent-blankline.nvim',
@@ -26,9 +48,15 @@ return {
     end,
   },
 
-  { 'numToStr/Comment.nvim' },
-
-  { 'stevearc/dressing.nvim' },
+  {
+    'numToStr/Comment.nvim',
+    dependencies = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
+    config = function()
+      require('Comment').setup()
+    end,
+  },
 
   { 'norcalli/nvim-colorizer.lua' },
 
@@ -44,8 +72,50 @@ return {
     end,
   },
 
-  { 'dkarter/bullets.vim' },
+  -- ハイライト系 {{{
+  {
+    -- 括弧に色付け
+    'HiPhish/rainbow-delimiters.nvim',
+    config = function()
+      require('plugins.config.rainbow-delimiters')
+    end,
+  },
+
+  {
+    -- 表示行番号に色付け
+    'lukas-reineke/virt-column.nvim',
+    config = function()
+      require('plugins.config.virt-column')
+    end,
+  },
   -- }}}
+
+  --- ゴーストテキスト追加系 {{{
+  {
+    -- FIXME: Not work
+    'haringsrob/nvim_context_vt',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    ft = { 'dart' },
+    config = function()
+      require('nvim-context-vt').setup {}
+    end,
+  },
+  --}}}
+
+  -- 表示修正系 {{
+  {
+    -- 文字ごとの横幅を別に設定
+    'delphinus/cellwidths.nvim',
+    enabled = false,
+    config = function()
+      require('cellwidths').setup {
+        name = 'default',
+      }
+    end,
+  },
+  -- }}
+
+  { 'dkarter/bullets.vim' },
 
   -- color scheme {{{
   { 'catppuccin/nvim' },
@@ -239,12 +309,12 @@ return {
     'petertriho/nvim-scrollbar',
     config = function()
       local scrollbar = require('scrollbar')
-      scrollbar.setup ({
+      scrollbar.setup {
         show_in_active_only = true,
         handle = {
           blend = 0,
           text = ' ',
-          color = '#1c1c1c',
+          color = '#3b3a40',
           color_nr = 234,
         },
         marks = {
@@ -256,7 +326,7 @@ return {
           Misc = { color = '#bb7744' },
           Cursor = { color = '#222222', text = ' ' },
         },
-      })
+      }
     end,
   },
 
