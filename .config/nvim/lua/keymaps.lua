@@ -26,10 +26,6 @@ vim.api.nvim_set_keymap('n', 'gj', 'j', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gk', 'k', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Plug>(lsp)', '<Nop>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'm', '<Plug>(lsp)', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Plug>(ff)', '<Nop>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'z', '<Plug>(ff)', { noremap = true })
 
 -- Emacs like keybinding
 vim.api.nvim_set_keymap('i', '<C-p>', '<Nop>', { noremap = true })
@@ -44,6 +40,9 @@ vim.api.nvim_set_keymap('i', '<C-m>', '<CR>', { noremap = true })
 
 -- New tab
 vim.api.nvim_set_keymap('n', 'te', ':tabedit', { noremap = true })
+
+-- tabの前送り
+vim.api.nvim_set_keymap('n', 'gb', 'gT', { noremap = true })
 
 -- Split window
 vim.api.nvim_set_keymap('n', 'vs', ':vsplit<Return><C-w>w', { noremap = true })

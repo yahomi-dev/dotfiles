@@ -54,7 +54,20 @@ return {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
     config = function()
-      require('Comment').setup()
+      require('Comment').setup {
+        toggler = {
+          ---Line-comment toggle keymap
+          line = 'gcc',
+          ---Block-comment toggle keymap
+          block = '<Leader><Leader>gbc',
+        },
+        opleader = {
+          ---Line-comment keymap
+          line = 'gc',
+          ---Block-comment keymap
+          block = '<Leader><Leader>gb',
+        },
+      }
     end,
   },
 
