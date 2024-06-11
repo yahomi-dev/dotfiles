@@ -86,13 +86,13 @@ return {
   },
 
   -- ハイライト系 {{{
-  {
-    -- 括弧に色付け
-    'HiPhish/rainbow-delimiters.nvim',
-    config = function()
-      require('plugins.config.rainbow-delimiters')
-    end,
-  },
+  -- {
+  --   -- 括弧に色付け
+  --   'HiPhish/rainbow-delimiters.nvim',
+  --   config = function()
+  --     require('plugins.config.rainbow-delimiters')
+  --   end,
+  -- },
 
   {
     -- 表示行番号に色付け
@@ -226,14 +226,14 @@ return {
   { 'hrsh7th/cmp-vsnip', lazy = true },
   { 'ray-x/cmp-treesitter', lazy = true },
   { 'uga-rosa/cmp-latex-symbol', lazy = true },
-  {
-    'uga-rosa/cmp-dictionary',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    lazy = true,
-    config = function()
-      require('plugins.config.cmp-dictionary')
-    end,
-  },
+  -- {
+  --   'uga-rosa/cmp-dictionary',
+  --   dependencies = { 'nvim-lua/plenary.nvim' },
+  --   lazy = true,
+  --   config = function()
+  --     require('plugins.config.cmp-dictionary')
+  --   end,
+  -- },
   {
     'uga-rosa/cmp-dynamic',
     lazy = true,
@@ -258,7 +258,7 @@ return {
       'rafamadriz/friendly-snippets',
       'ray-x/cmp-treesitter',
       'uga-rosa/cmp-latex-symbol',
-      'uga-rosa/cmp-dictionary',
+      -- 'uga-rosa/cmp-dictionary',
       'uga-rosa/cmp-dynamic',
       'onsails/lspkind.nvim',
     },
