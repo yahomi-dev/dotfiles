@@ -1,6 +1,16 @@
 -- 高速化
 if vim.loader then vim.loader.enable() end
 
+-- wsl用コピペ設定
+vim.cmd([[
+  if system('uname -a | grep microsoft') != ''
+    augroup myYank
+      autocmd!
+      autocmd TextYankPost * :call system('clip.exe', @")
+    augroup END
+  endif
+]])
+
 require('options')
 
 require('keymaps')
