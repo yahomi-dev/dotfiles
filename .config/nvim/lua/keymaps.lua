@@ -47,6 +47,9 @@ vim.api.nvim_set_keymap('n', 'gb', 'gT', { noremap = true })
 -- Split window
 vim.api.nvim_set_keymap('n', 'vs', ':vsplit<Return><C-w>w', { noremap = true })
 
+-- format
+vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>lua vim.lsp.buf.format({timeout = 2000})<CR>', { noremap = true })
+
 -- switch case
 vim.api.nvim_set_keymap('x', '<Space>j', ':s/\\<\\@!\\([A-Z]\\)/-\\l\\1/g<CR>', { noremap = true })
 
