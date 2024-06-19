@@ -44,3 +44,5 @@ function gitmain() {
 }
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH=$HOME/bin:$PATH
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
