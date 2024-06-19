@@ -51,6 +51,11 @@ vim.keymap.set('n', 'zgs', function()
   builtin.git_status()
 end)
 
+-- git branch 
+vim.keymap.set('n', 'zbr', function()
+  builtin.git_branches()
+end)
+
 vim.keymap.set('n', ';e', function()
   builtin.diagnostics()
 end)
