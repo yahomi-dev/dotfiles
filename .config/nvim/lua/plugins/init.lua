@@ -294,4 +294,7 @@ return {
       }
     end,
   },
+
+  -- neta
+  { 'seandewar/nvimesweeper' },
 }
