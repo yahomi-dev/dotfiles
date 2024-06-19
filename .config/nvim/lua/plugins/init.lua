@@ -29,16 +29,8 @@ return {
     end,
   },
 
-  -- テキストオブジェクト
-  -- {
-  --   'nvim-treesitter/nvim-treesitter-textobjects',
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  --   config = function()
-  --     require('plugins.config.treesitter-textobjects')
-  --   end,
-  -- },
-
   {
+    -- インデント補助
     'lukas-reineke/indent-blankline.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
@@ -49,6 +41,7 @@ return {
   },
 
   {
+    -- コメントいい感じに
     'numToStr/Comment.nvim',
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
@@ -71,8 +64,6 @@ return {
     end,
   },
 
-  { 'norcalli/nvim-colorizer.lua' },
-
   -- 括弧補完、オブジェクト展開
   {
     'hrsh7th/nvim-insx',
@@ -86,19 +77,12 @@ return {
   },
 
   -- ハイライト系 {{{
-  -- {
-  --   -- 括弧に色付け
-  --   'HiPhish/rainbow-delimiters.nvim',
-  --   config = function()
-  --     require('plugins.config.rainbow-delimiters')
-  --   end,
-  -- },
 
   {
-    -- 表示行番号に色付け
-    'lukas-reineke/virt-column.nvim',
+    -- 括弧に色付け
+    'HiPhish/rainbow-delimiters.nvim',
     config = function()
-      require('plugins.config.virt-column')
+      require('plugins.config.rainbow-delimiters')
     end,
   },
   -- }}}
@@ -128,18 +112,8 @@ return {
   },
   -- }}
 
-  { 'dkarter/bullets.vim' },
-
   -- color scheme {{{
   { 'catppuccin/nvim' },
-
-  {
-    'andersevenrud/nordic.nvim',
-    config = function()
-      require('plugins.config.nordic')
-    end,
-  },
-
   -- }}}
 
   -- status line {{{
@@ -150,16 +124,6 @@ return {
     },
     config = function()
       require('plugins.config.lualine')
-    end,
-  },
-  -- }}}
-
-  -- motion {{{
-  {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    config = function()
-      require('flash').setup()
     end,
   },
   -- }}}
@@ -307,18 +271,6 @@ return {
   },
 
   {
-    'yahomi-dev/case-shift.nvim',
-    config = function()
-      require('plugins.config.case-shift')
-    end,
-  },
-
-  {
-    'shaunsingh/nord.nvim',
-    name = 'nord',
-  },
-
-  {
     'petertriho/nvim-scrollbar',
     config = function()
       local scrollbar = require('scrollbar')
@@ -337,14 +289,9 @@ return {
           Info = { color = '#5f875f' },
           Hint = { color = '#5f875f' },
           Misc = { color = '#bb7744' },
-          Cursor = { color = '#222222', text = ' ' },
+          Cursor = { color = '#666666', text = ' ' },
         },
       }
     end,
-  },
-
-  -- create colorScheme
-  {
-    'vim/colorschemes',
   },
 }
