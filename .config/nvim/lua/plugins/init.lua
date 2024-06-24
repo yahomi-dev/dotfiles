@@ -115,7 +115,8 @@ return {
   -- color scheme {{{
   { 'catppuccin/nvim' },
 
-  { 'Shatur/neovim-ayu',
+  {
+    'Shatur/neovim-ayu',
     config = function()
       require('plugins.config.ayu')
     end,
@@ -145,16 +146,25 @@ return {
 
   -- Fuzzy finder {{{
   {
+    -- FIXME
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    lazy = true,
+  },
+
+  {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
+      'nvim-telescope/telescope-fzf-native.nvim',
     },
     config = function()
       require('plugins.config.telescope')
     end,
   },
+
   -- }}}
 
   -- LSP setting {{{
@@ -193,7 +203,7 @@ return {
   { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
   { 'hrsh7th/cmp-emoji', lazy = true },
   { 'hrsh7th/cmp-calc', lazy = true },
-  { 'hrsh7th/cmp-vsnip', lazy = true },
+  { 'saadparwaiz1/cmp_luasnip', lazy = true },
   { 'ray-x/cmp-treesitter', lazy = true },
   { 'uga-rosa/cmp-latex-symbol', lazy = true },
   -- {
@@ -224,7 +234,8 @@ return {
       'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-calc',
       'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
       'rafamadriz/friendly-snippets',
       'ray-x/cmp-treesitter',
       'uga-rosa/cmp-latex-symbol',
@@ -239,9 +250,25 @@ return {
   -- }}}
 
   -- Snippet {{{
-  { 'hrsh7th/vim-vsnip', lazy = true },
   { 'rafamadriz/friendly-snippets', lazy = true },
-  { 'L3MON4D3/LuaSnip' },
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      cond = false,
+      config = function()
+        require('luasnip.loaders.from_vscode').lazy_load()
+      end,
+    },
+    version = 'v2.*',
+    build = 'make install_jsregexp',
+    config = function()
+      vim.keymap.set('n', '<leader>ss', function()
+        require('luasnip.loaders').edit_snippet_files()
+      end, { desc = 'edit snippets' })
+      require('luasnip.loaders.from_lua').load()
+    end,
+  },
   -- }}}
 
   -- filer
