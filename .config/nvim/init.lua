@@ -34,8 +34,10 @@ require('lazy').setup('plugins')
 
 -- colorScheme
 -- vim.cmd.colorscheme('habamax')
+-- vim.cmd.colorscheme('ayu')
 
 vim.cmd.colorscheme('catppuccin')
+
 
 vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
