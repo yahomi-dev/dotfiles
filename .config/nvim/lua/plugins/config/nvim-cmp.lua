@@ -6,6 +6,7 @@
 local cmp = require('cmp')
 local cmp_types = require('cmp.types')
 local lspkind = require('lspkind')
+local luasnip = require('luasnip')
 -- local icons = require('plugins.config.shared.icons')
 
 cmp.setup {
@@ -14,7 +15,7 @@ cmp.setup {
   },
   snippet = {
     expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   window = {
@@ -25,7 +26,7 @@ cmp.setup {
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'vsnip' },
+    { name = 'luasnip' },
     { name = 'path' },
     { name = 'ghq' },
     { name = 'latex_symbol' },
@@ -35,7 +36,7 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'dictionary', keyword_length = 2 },
   },
-  mapping = cmp.mapping.preset.insert({
+  mapping = cmp.mapping.preset.insert {
     ['<C-p>'] = cmp.mapping.select_prev_item(), --補完欄を一つ上に移動
     ['<C-n>'] = cmp.mapping.select_next_item(), --補完欄を一つ下に移動
     ['<C-u>'] = cmp.mapping.scroll_docs(-5), -- docsを上にスクロール
@@ -43,17 +44,47 @@ cmp.setup {
     ['<C-e>'] = cmp.mapping.abort(), -- 補完候補を閉じる(補完しない)
     --
     --Tabで補完を選択確定
-    ['<Tab>'] = cmp.mapping.confirm({
-      -- behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        if luasnip.locally_jumpable(1) then
+          luasnip.jump(1)
+        else
+          cmp.confirm {
+            select = true,
+          }
+        end
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
 
-    --Returnで補完を選択確定
-    ['<CR>'] = cmp.mapping.confirm({
-      -- behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    }),
-  }),
+    -- LuaSnip設定
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        if luasnip.locally_jumpable(-1) then
+          luasnip.jump(-1)
+        end
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+
+    -- Returnで補完を選択確定
+    ['<CR>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        if luasnip.expandable() then
+          luasnip.expand()
+        else
+          cmp.confirm {
+            select = true,
+          }
+        end
+      else
+        fallback()
+      end
+    end),
+  },
+
   experimental = {
     ghost_text = false,
   },
@@ -82,35 +113,34 @@ cmp.setup {
         nvim_lsp_signature_help = 'signature',
         path = 'path',
         treesitter = 'treesitter',
-        vsnip = 'vsnip',
       },
-     -- symbol_map = {
-     --   Text = icons.text,
-     --   Method = icons.method,
-     --   Function = icons.func,
-     --   Constructor = icons.constructor,
-     --   Field = icons.field,
-     --   Variable = icons.variable,
-     --   Class = icons.class,
-     --   Interface = icons.interface,
-     --   Module = icons.module,
-     --   Property = icons.property,
-     --   Unit = icons.unit,
-     --   Value = icons.value,
-     --   Enum = icons.enum,
-     --   Keyword = icons.keyword,
-     --   Snippet = icons.snippet,
-     --   Color = icons.color,
-     --   File = icons.file,
-     --   Reference = icons.reference,
-     --   Folder = icons.folder,
-     --   EnumMember = icons.enum_member,
-     --   Constant = icons.constant,
-     --   Struct = icons.struct,
-     --   Event = icons.event,
-     --   Operator = icons.operator,
-     --   TypeParameter = icons.type_parameter,
-     -- },
+      -- symbol_map = {
+      --   Text = icons.text,
+      --   Method = icons.method,
+      --   Function = icons.func,
+      --   Constructor = icons.constructor,
+      --   Field = icons.field,
+      --   Variable = icons.variable,
+      --   Class = icons.class,
+      --   Interface = icons.interface,
+      --   Module = icons.module,
+      --   Property = icons.property,
+      --   Unit = icons.unit,
+      --   Value = icons.value,
+      --   Enum = icons.enum,
+      --   Keyword = icons.keyword,
+      --   Snippet = icons.snippet,
+      --   Color = icons.color,
+      --   File = icons.file,
+      --   Reference = icons.reference,
+      --   Folder = icons.folder,
+      --   EnumMember = icons.enum_member,
+      --   Constant = icons.constant,
+      --   Struct = icons.struct,
+      --   Event = icons.event,
+      --   Operator = icons.operator,
+      --   TypeParameter = icons.type_parameter,
+      -- },
     },
     before = function(entry, vim_item)
       local word = entry:get_insert_text()
