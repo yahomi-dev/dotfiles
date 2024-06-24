@@ -114,6 +114,12 @@ return {
 
   -- color scheme {{{
   { 'catppuccin/nvim' },
+
+  { 'Shatur/neovim-ayu',
+    config = function()
+      require('plugins.config.ayu')
+    end,
+  },
   -- }}}
 
   -- status line {{{
@@ -235,6 +241,7 @@ return {
   -- Snippet {{{
   { 'hrsh7th/vim-vsnip', lazy = true },
   { 'rafamadriz/friendly-snippets', lazy = true },
+  { 'L3MON4D3/LuaSnip' },
   -- }}}
 
   -- filer
