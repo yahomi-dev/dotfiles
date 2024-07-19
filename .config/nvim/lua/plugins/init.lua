@@ -185,6 +185,9 @@ return {
     end,
   },
 
+  -- }}}
+
+  --- Format / Lint {{{
   {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -192,7 +195,14 @@ return {
       require('plugins.config.null-ls')
     end,
   },
-  -- }}}
+
+  { 'mhartington/formatter.nvim',
+    config = function ()
+      require('plugins.config.formatter')
+    end
+
+  },
+  --- }}}
 
   -- Completion {{{
   { 'hrsh7th/cmp-nvim-lsp', lazy = true },

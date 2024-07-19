@@ -1,4 +1,3 @@
-
 ---------------------------------------------------------------------------------------------------+
 -- Commands \ Modes | Normal | Insert | Command | Visual | Select | Operator | Terminal | Lang-Arg |
 -- ================================================================================================+
@@ -53,3 +52,7 @@ vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>lua vim.lsp.buf.format({timeout
 -- switch case
 vim.api.nvim_set_keymap('x', '<Space>j', ':s/\\<\\@!\\([A-Z]\\)/-\\l\\1/g<CR>', { noremap = true })
 
+--  va"をvi2"に
+for _, quote in ipairs({'"', "'", "`"}) do
+    vim.keymap.set({"x", "o"}, "a" .. quote, "2i" .. quote)
+end
