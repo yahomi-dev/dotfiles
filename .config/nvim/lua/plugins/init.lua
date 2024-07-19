@@ -188,14 +188,6 @@ return {
   -- }}}
 
   --- Format / Lint {{{
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('plugins.config.null-ls')
-    end,
-  },
-
   { 'mhartington/formatter.nvim',
     config = function ()
       require('plugins.config.formatter')
