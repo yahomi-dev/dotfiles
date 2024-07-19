@@ -51,7 +51,7 @@ vim.keymap.set('n', 'zgs', function()
 end)
 
 -- git branch
-vim.keymap.set('n', 'zbr', function()
+vim.keymap.set('n', 'zgb', function()
   builtin.git_branches()
 end)
 
