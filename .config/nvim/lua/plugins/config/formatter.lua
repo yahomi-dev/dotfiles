@@ -74,4 +74,11 @@ require('formatter').setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<Leader>jm', '<cmd>Format<CR>', { noremap = true })
+-- format
+vim.api.nvim_set_keymap('n', '<Leader>fm', '<cmd>Format<CR>', { noremap = true })
+
+-- lspで動くものはこっちだけで動く
+-- ref: https://eiji.page/blog/neovim-dynamic-capabilities/
+-- ref2: https://github.com/neovim/nvim-lspconfig/issues/1792#issuecomment-1352782205
+-- vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>lua vim.lsp.buf.format({timeout = 2000})<CR>', { noremap = true })
+
