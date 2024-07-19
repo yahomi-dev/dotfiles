@@ -188,11 +188,18 @@ return {
   -- }}}
 
   --- Format / Lint {{{
-  { 'mhartington/formatter.nvim',
-    config = function ()
+  {
+    'mhartington/formatter.nvim',
+    config = function()
       require('plugins.config.formatter')
-    end
+    end,
+  },
 
+  {
+    'mfussenegger/nvim-lint',
+    config = function()
+      require('plugins.config.nvim-lint')
+    end,
   },
   --- }}}
 
@@ -299,12 +306,12 @@ return {
     end,
   },
 
-  {
-    'monaqa/dial.nvim',
-    config = function()
-      require('plugins.config.dial')
-    end,
-  },
+  -- {
+  --   'monaqa/dial.nvim',
+  --   config = function()
+  --     require('plugins.config.dial')
+  --   end,
+  -- },
 
   {
     'petertriho/nvim-scrollbar',
