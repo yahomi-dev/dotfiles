@@ -34,6 +34,16 @@ require('formatter').setup {
       end,
     },
 
+    typescriptreact = {
+      function()
+        return {
+          exe = 'prettier',
+          args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+          stdin = true,
+        }
+      end,
+    },
+
     -- Formatter configurations for filetype "lua" go here
     -- and will be executed in order
     lua = {
@@ -81,4 +91,3 @@ vim.api.nvim_set_keymap('n', '<Leader>fm', '<cmd>Format<CR>', { noremap = true }
 -- ref: https://eiji.page/blog/neovim-dynamic-capabilities/
 -- ref2: https://github.com/neovim/nvim-lspconfig/issues/1792#issuecomment-1352782205
 -- vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>lua vim.lsp.buf.format({timeout = 2000})<CR>', { noremap = true })
-
