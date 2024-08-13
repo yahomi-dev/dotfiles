@@ -1,6 +1,6 @@
 local comment = require('Comment')
 
-comment.setup({
+comment.setup {
   ---Add a space b/w comment and the line
   ---@type boolean
   padding = true,
@@ -49,9 +49,9 @@ comment.setup({
   -- pre_hook = function(ctx)
   --   return require('ts_context_commentstring.internal').calculate_commentstring()
   -- end,
-  pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 
   ---Post-hook, called after commenting is done
   ---@type function|nil
   post_hook = nil,
-})
+}

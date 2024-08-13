@@ -3,8 +3,6 @@ local lint = require('lint')
 lint.linters_by_ft = {
   javascript = { 'eslint_d' },
   typescript = { 'eslint_d' },
-  lua = { 'luacheck' },
-  php = { 'php' },
 }
 
 -- 自動的に保存時にリンティングを実行する設定
