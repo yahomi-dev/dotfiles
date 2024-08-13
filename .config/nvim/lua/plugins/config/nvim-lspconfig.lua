@@ -21,30 +21,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     local bufnr = ev.buf
-    local bufopts = { buffer = bufnr }
+    local bufopts = { buffer = bufnr, silent = true }
 
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'zq', '<Cmd>Telescope diagnostics<CR>')
+    vim.keymap.set('n', 'zq', '<Cmd>Telescope diagnostics<CR>', bufopts)
     vim.keymap.set('n', ';d', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', ';i', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', ';i', '<Cmd>Telescope lsp_implementations', bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set({ 'n' }, ';i', '<Cmd>Telescope lsp_implementations<CR>')
-    vim.keymap.set({ 'n' }, ';t', '<Cmd>Telescope lsp_type_definitions<CR>')
-    vim.keymap.set({ 'n' }, ';r', '<Cmd>Telescope lsp_references<CR>')
+    vim.keymap.set('n', ';t', '<Cmd>Telescope lsp_type_definitions<CR>', bufopts)
+    vim.keymap.set('n', ';r', '<Cmd>Telescope lsp_references<CR>', bufopts)
     vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', ';a', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', ';r', vim.lsp.buf.references, bufopts)
-
-    -- ref: https://vi.stackexchange.com/questions/39074/user-borders-around-lsp-floating-windows
-    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = 'rounded',
-    })
-    vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = 'rounded',
-    })
-    vim.diagnostic.config {
-      float = { border = 'rounded' },
-    }
   end,
 })
 
