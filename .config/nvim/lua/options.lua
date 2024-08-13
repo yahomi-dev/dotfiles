@@ -37,8 +37,7 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
-vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohl<CR>', { noremap = true, silent = true})
-
+vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohl<CR>', { noremap = true, silent = true })
 
 vim.g.mapleader = ' '
 vim.opt.clipboard = 'unnamedplus'
@@ -50,7 +49,7 @@ vim.opt.undofile = true -- アンドゥファイルを作る
 vim.cmd([[
 set undodir=~/.vim/undodir
 ]])
-vim.opt.backup = false   -- バックアップ取らない
+vim.opt.backup = false -- バックアップ取らない
 vim.opt.swapfile = false -- スワップファイル作らない
 vim.opt.hidden = false -- 編集中の場合、他のファイルを開けない
 vim.opt.autoread = true -- 他で書き換えられたら自動で読み直す
