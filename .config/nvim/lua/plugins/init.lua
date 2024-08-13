@@ -112,13 +112,29 @@ return {
   },
   -- }}
 
-  -- color scheme {{{
-  { 'catppuccin/nvim' },
+  -- colorscheme {{{
+  {
+    'catppuccin/nvim',
+    config = function()
+      require('plugins.config.catppuccin')
+    end,
+  },
 
   {
     'Shatur/neovim-ayu',
     config = function()
       require('plugins.config.ayu')
+    end,
+  },
+
+  {
+    'neanias/everforest-nvim',
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require('plugins.config.everforest')
     end,
   },
   -- }}}
