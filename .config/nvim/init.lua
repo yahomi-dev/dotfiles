@@ -1,5 +1,7 @@
 -- 高速化
-if vim.loader then vim.loader.enable() end
+if vim.loader then
+  vim.loader.enable()
+end
 
 -- wsl用コピペ設定
 vim.cmd([[
@@ -37,7 +39,6 @@ require('lazy').setup('plugins')
 -- vim.cmd.colorscheme('ayu')
 
 vim.cmd.colorscheme('catppuccin')
-
 
 vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC

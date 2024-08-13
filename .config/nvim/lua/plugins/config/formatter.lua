@@ -87,6 +87,14 @@ require('formatter').setup {
 -- format
 vim.api.nvim_set_keymap('n', '<Leader>fm', '<cmd>Format<CR>', { noremap = true })
 
+-- 自動的に保存時にフォーマットを実行
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = { '*.lua', '*.js', '*.tsx' },
+  callback = function()
+    vim.cmd('FormatWrite')
+  end,
+})
+
 -- lspで動くものはこっちだけで動く
 -- ref: https://eiji.page/blog/neovim-dynamic-capabilities/
 -- ref2: https://github.com/neovim/nvim-lspconfig/issues/1792#issuecomment-1352782205
