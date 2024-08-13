@@ -49,4 +49,6 @@ function gitmain() {
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH=$HOME/bin:$PATH
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
