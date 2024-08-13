@@ -35,7 +35,12 @@ vim.keymap.set('n', '<C-p>', function()
 end)
 
 vim.keymap.set('n', 'zf', function()
-  builtin.live_grep { hidden = true }
+  builtin.live_grep {
+    hidden = true,
+    additional_args = function()
+      return { '--hidden' }
+    end,
+  }
 end)
 
 vim.keymap.set('n', 'zo', function()
