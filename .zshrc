@@ -28,6 +28,9 @@ alias cdv='cd ~/test-vue/vue-application'
 alias cda='cd ~/atc/rust/root'
 alias cdw='cd ~/.config/wezterm'
 
+# git alias
+alias gita="git commit --allow-empty -m"
+
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt auto_cd
