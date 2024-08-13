@@ -21,9 +21,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     local bufnr = ev.buf
-    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
     local bufopts = { buffer = bufnr }
+
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'zq', '<Cmd>Telescope diagnostics<CR>')
     vim.keymap.set('n', ';d', vim.lsp.buf.definition, bufopts)
