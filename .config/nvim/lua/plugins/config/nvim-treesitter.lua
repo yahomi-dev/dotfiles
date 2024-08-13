@@ -2,7 +2,9 @@ require('nvim-treesitter.configs').setup {
   sync_install = false,
   ensure_installed = {
     'typescript',
+    'tsx',
     'javascript',
+    'json',
     'vue',
     'vim',
     'lua',
@@ -16,10 +18,10 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     disable = {},
   },
-  indent ={
-    enable =true
+  indent = {
+    enable = true,
   },
   autotag = {
     enable = true,
-  }
+  },
 }
