@@ -52,6 +52,6 @@ vim.api.nvim_set_keymap('n', 'vs', ':vsplit<Return><C-w>w', { noremap = true })
 vim.api.nvim_set_keymap('x', '<Space>j', ':s/\\<\\@!\\([A-Z]\\)/-\\l\\1/g<CR>', { noremap = true })
 
 --  va"をvi2"に
-for _, quote in ipairs({'"', "'", "`"}) do
-    vim.keymap.set({"x", "o"}, "a" .. quote, "2i" .. quote)
+for _, quote in ipairs { '"', "'", '`' } do
+  vim.keymap.set({ 'x', 'o' }, 'a' .. quote, '2i' .. quote)
 end
