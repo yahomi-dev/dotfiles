@@ -30,4 +30,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = '●', -- エラーメッセージの前に表示する文字を変更
+    spacing = 2, -- メッセージとライン間のスペース
+    format = function(diagnostic)
+      local code = diagnostic.code or '' -- コードがある場合は取得
+      local source = diagnostic.source or '' -- ソースがある場合は取得
+      return string.format('%s (%s: %s)', diagnostic.message, source, code)
+    end,
+  },
+  float = {
+    source = 'always', -- 常にエラーメッセージを表示
+    border = 'rounded', -- フロートウィンドウの境界を丸くする
+  },
+}
+
+-- エラーメッセージを表示するキーバインドを設定（例: `K`キーで表示）
+vim.keymap.set('n', 'L', vim.diagnostic.open_float, { noremap = true, silent = true })
+
 require('lspconfig.ui.windows').default_options.border = 'rounded'
