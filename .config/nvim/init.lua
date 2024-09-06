@@ -3,6 +3,9 @@ if vim.loader then
   vim.loader.enable()
 end
 
+-- すべてのオートコマンドをクリア
+vim.cmd('autocmd!')
+
 -- wsl用コピペ設定
 vim.cmd([[
   if system('uname -a | grep microsoft') != ''
