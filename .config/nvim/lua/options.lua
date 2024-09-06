@@ -37,7 +37,6 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohl<CR>', { noremap = true, silent = true })
 
-vim.g.mapleader = ' '
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 50
