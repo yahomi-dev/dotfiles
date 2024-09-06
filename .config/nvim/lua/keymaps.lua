@@ -26,7 +26,7 @@ vim.api.nvim_set_keymap('n', 'gj', 'j', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gk', 'k', { noremap = true })
 
 -- リーダーキーの設定
-vim.g.mapleader = '<Space>'
+vim.g.mapleader = ' '
 vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
 
 -- インサートモード中の移動をEmacs風に
