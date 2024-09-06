@@ -20,7 +20,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local bufopts = { buffer = bufnr, silent = true }
 
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'zq', '<Cmd>Telescope diagnostics<CR>', bufopts)
     vim.keymap.set('n', ';d', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', ';i', '<Cmd>Telescope lsp_implementations<CR>', bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)

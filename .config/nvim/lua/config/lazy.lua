@@ -20,4 +20,15 @@ vim.opt.rtp:prepend(lazypath)
 -- }}}
 
 -- Setup lazy.nvim
-require('lazy').setup('plugins')
+require('lazy').setup {
+  -- lua/pluginsの内容を読み込み
+  spec = {
+    { import = 'plugins' },
+  },
+
+  -- インストール画面でのカラースキーマ
+  install = { colorscheme = { 'catppuccin' } },
+
+  -- プラグインの自動更新確認
+  checker = { enabled = false },
+}
