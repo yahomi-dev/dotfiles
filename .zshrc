@@ -12,8 +12,11 @@ PROMPT='
 %# '
 
 ## alias
-# vimのundo履歴をクリーンアップ 
+# vimのundo履歴をクリーンアップ
 alias cleanup_undo='find ~/.vim/undodir -type f -size +10M -exec rm {} \;'
+
+## テスト用のneovim起動
+alias nvim-test='nvim -u ~/nvim-test/init.lua'
 
 alias ll="exa -l -h -@ -mU --icons --git --time-style=long-iso --color=automatic --group-directories-first"
 alias l="ll -aa"
@@ -49,6 +52,16 @@ function gitmain() {
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH=$HOME/bin:$PATH
 
+export DENO_INSTALL="/Users/yahomi/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# bun completions
+[ -s "/Users/yahomi/.bun/_bun" ] && source "/Users/yahomi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
