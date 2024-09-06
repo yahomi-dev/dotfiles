@@ -64,6 +64,4 @@ vim.keymap.set('n', 'zgb', function()
   builtin.git_branches()
 end)
 
-vim.keymap.set('n', 'zq', function()
-  builtin.diagnostics()
-end)
+vim.api.nvim_set_keymap('n', 'zq', ':Telescope coc diagnostics<CR>', { noremap = true, silent = true })

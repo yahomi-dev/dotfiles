@@ -151,6 +151,8 @@ return {
   -- }}}
 
   -- Fuzzy finder {{{
+  { 'fannheyward/telescope-coc.nvim' },
+
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
@@ -158,30 +160,11 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
+      'fannheyward/telescope-coc.nvim',
     },
 
     config = function()
       require('plugins.config.telescope')
-    end,
-  },
-
-  -- }}}
-
-  -- LSP setting {{{
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require('plugins.config.nvim-lspconfig')
-    end,
-  },
-
-  { 'williamboman/mason-lspconfig.nvim', lazy = true },
-  {
-    'williamboman/mason.nvim',
-    dependencies = { 'williamboman/mason-lspconfig.nvim' },
-    build = ':MasonUpdate',
-    config = function()
-      require('plugins.config.mason')
     end,
   },
 
@@ -203,57 +186,12 @@ return {
   },
   --- }}}
 
-  -- Completion {{{
-  { 'hrsh7th/cmp-nvim-lsp', lazy = true },
-  { 'hrsh7th/cmp-nvim-lua', lazy = true },
-  { 'hrsh7th/cmp-buffer', lazy = true },
-  { 'hrsh7th/cmp-path', lazy = true },
-  { 'hrsh7th/cmp-cmdline', lazy = true },
-  { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
-  { 'hrsh7th/cmp-emoji', lazy = true },
-  { 'hrsh7th/cmp-calc', lazy = true },
-  { 'saadparwaiz1/cmp_luasnip', lazy = true },
-  { 'ray-x/cmp-treesitter', lazy = true },
-  { 'uga-rosa/cmp-latex-symbol', lazy = true },
-  -- {
-  --   'uga-rosa/cmp-dictionary',
-  --   dependencies = { 'nvim-lua/plenary.nvim' },
-  --   lazy = true,
-  --   config = function()
-  --     require('plugins.config.cmp-dictionary')
-  --   end,
-  -- },
+  -- LSP setting & Completion {{{
   {
-    'uga-rosa/cmp-dynamic',
-    lazy = true,
+    'neoclide/coc.nvim',
+    branch = 'release',
     config = function()
-      require('plugins.config.cmp-dynamic')
-    end,
-  },
-  { 'onsails/lspkind.nvim', lazy = true },
-  {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-emoji',
-      'hrsh7th/cmp-calc',
-      'hrsh7th/cmp-vsnip',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      'rafamadriz/friendly-snippets',
-      'ray-x/cmp-treesitter',
-      'uga-rosa/cmp-latex-symbol',
-      -- 'uga-rosa/cmp-dictionary',
-      'uga-rosa/cmp-dynamic',
-      'onsails/lspkind.nvim',
-    },
-    config = function()
-      require('plugins.config.nvim-cmp')
+      require('plugins.config.coc')
     end,
   },
   -- }}}
