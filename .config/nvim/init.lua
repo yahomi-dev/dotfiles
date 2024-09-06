@@ -3,6 +3,9 @@ if vim.loader then
   vim.loader.enable()
 end
 
+-- すべてのオートコマンドをクリア
+vim.cmd('autocmd!')
+
 -- wsl用コピペ設定
 vim.cmd([[
   if system('uname -a | grep microsoft') != ''
@@ -13,26 +16,11 @@ vim.cmd([[
   endif
 ]])
 
-require('options')
+require('config.options')
 
-require('keymaps')
+require('config.keymaps')
 
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
-end
-
-vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup('plugins')
+require('config.lazy')
 
 -- colorScheme
 -- vim.cmd.colorscheme('habamax')
