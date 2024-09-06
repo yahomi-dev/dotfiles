@@ -17,6 +17,7 @@
 -- ターミナルモードでインサートモードからEscでノーマルモードに
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 
+-- 論理行と物理行の移動を入れ替え
 vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Down>', 'gj', { noremap = true })
@@ -24,9 +25,11 @@ vim.api.nvim_set_keymap('n', '<Up>', 'gk', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gj', 'j', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gk', 'k', { noremap = true })
 
+-- リーダーキーの設定
+vim.g.mapleader = ' '
 vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
 
--- Emacs like keybinding
+-- インサートモード中の移動をEmacs風に
 vim.api.nvim_set_keymap('i', '<C-p>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-n>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', { noremap = true })
@@ -44,10 +47,7 @@ vim.api.nvim_set_keymap('n', 'te', ':tabedit', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gb', 'gT', { noremap = true })
 
 -- Split window
-vim.api.nvim_set_keymap('n', 'vs', ':vsplit<Return><C-w>w', { noremap = true })
-
--- switch case
-vim.api.nvim_set_keymap('x', '<Space>j', ':s/\\<\\@!\\([A-Z]\\)/-\\l\\1/g<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'vs', ':vsplit<CR><C-w>w', { noremap = true })
 
 --  va"をvi2"に
 for _, quote in ipairs { '"', "'", '`' } do
