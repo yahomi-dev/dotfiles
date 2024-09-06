@@ -21,22 +21,11 @@ return {
   },
 
   {
-    -- コメントをいい感じに
+    -- tsコメントをいい感じに
     'JoosepAlviste/nvim-ts-context-commentstring',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('ts_context_commentstring').setup()
-    end,
-  },
-
-  {
-    -- インデント補助
-    'lukas-reineke/indent-blankline.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require('ibl').setup {
-        scope = { enabled = false },
-      }
     end,
   },
 
@@ -47,7 +36,10 @@ return {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
     config = function()
+      local ts_context = require('ts_context_commentstring.integrations.comment_nvim')
+
       require('Comment').setup {
+        pre_hook = ts_context.create_pre_hook(),
         toggler = {
           ---Line-comment toggle keymap
           line = 'gcc',
@@ -70,13 +62,23 @@ return {
     config = function()
       require('insx.preset.standard').setup {
         cmdline = {
-          enabled = true,
+          enabled = false,
         },
       }
     end,
   },
 
-  -- ハイライト系 {{{
+  -- 視覚補助 {{{
+  {
+    -- インデント補助
+    'lukas-reineke/indent-blankline.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('ibl').setup {
+        scope = { enabled = false },
+      }
+    end,
+  },
 
   {
     -- 括弧に色付け
@@ -86,18 +88,6 @@ return {
     end,
   },
   -- }}}
-
-  --- ゴーストテキスト追加系 {{{
-  {
-    -- FIXME: Not work
-    'haringsrob/nvim_context_vt',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    ft = { 'dart' },
-    config = function()
-      require('nvim-context-vt').setup {}
-    end,
-  },
-  --}}}
 
   -- 表示修正系 {{
   {
@@ -315,39 +305,6 @@ return {
       require('plugins.config.nvim-autopairs')
     end,
   },
-
-  -- {
-  --   'monaqa/dial.nvim',
-  --   config = function()
-  --     require('plugins.config.dial')
-  --   end,
-  -- },
-
-  -- {
-  --   'petertriho/nvim-scrollbar',
-  --   config = function()
-  --     local scrollbar = require('scrollbar')
-  --     scrollbar.setup {
-  --       show_in_active_only = true,
-  --       handle = {
-  --         blend = 0,
-  --         text = ' ',
-  --         color = '#3b3a40',
-  --         color_nr = 234,
-  --       },
-  --       marks = {
-  --         Search = { color = '#C9A554' },
-  --         Error = { color = '#685742' },
-  --         Warn = { color = '#B36D43' },
-  --         Info = { color = '#5f875f' },
-  --         Hint = { color = '#5f875f' },
-  --         Misc = { color = '#bb7744' },
-  --         Cursor = { color = '#666666', text = ' ' },
-  --       },
-  --     }
-  --   end,
-  -- },
-
   -- neta
   { 'seandewar/nvimesweeper' },
 }
