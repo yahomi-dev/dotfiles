@@ -10,10 +10,14 @@ telescope.setup {
       height = 0.9,
       width = 0.9,
     },
-    file_ignore_patterns = { --検索対象に含めないファイルを指定
+
+    --検索対象に含めないファイルを指定
+    file_ignore_patterns = {
       '^.git/',
       '^node_modules/',
     },
+
+    -- キーマップ
     mappings = {
       i = {
         ['<Esc>'] = actions.close,
@@ -58,8 +62,4 @@ end)
 -- git branch
 vim.keymap.set('n', 'zgb', function()
   builtin.git_branches()
-end)
-
-vim.keymap.set('n', ';e', function()
-  builtin.diagnostics()
 end)
