@@ -22,10 +22,13 @@ local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup {
   ensure_installed = {
     'lua_ls',
+    'jsonls',
     'rust_analyzer',
     'cssls',
-    'tsserver',
+    'tailwindcss',
+    'vtsls',
     'volar',
+    'prismals',
   },
 }
 
