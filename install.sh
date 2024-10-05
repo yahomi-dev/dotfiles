@@ -1,33 +1,19 @@
-#!bin/sh
+#!/bin/bash
 
-# ----
-# dotfilesのシンボリックリンクを作成する
-# 引数：なし
-# 戻値：なし
-# 備考：
-# ----
+# OSの判定
+if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
+  echo "LinuxまたはmacOSが検出されました。"
 
-SCRIPT_DIR_PATH=$(cd $(dirname $0);pwd)
+  # Linux/macOS用スクリプトを実行
+  bash ./linux-mac-setup.sh
 
-# dotfilesのシンボリックリンク作成
-mkdir ~/.config
-ln -fns ${SCRIPT_DIR_PATH}/.config/nvim ~/.config/nvim
-ln -fns ${SCRIPT_DIR_PATH}/.bash_profile ~/.bash_profile
-ln -fns ${SCRIPT_DIR_PATH}/.bashrc ~/.bashrc
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+  echo "Windowsが検出されました。"
 
-source ~/.bash_profile
+  # Windows用スクリプトを実行
+  bash ./windows-setup.sh
 
-
-if [ "$(uname)" == 'Darwin' ]; then
-  # Homebrewをインストールする
-  # ref: https://docs.brew.sh/Installation
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-  source ~/.bash_profile
-
-  # Homebrewで管理しているパッケージをインストールする
-  # ref: https://tech.gootablog.com/article/homebrew-brewfile/
-  brew bundle
-
-  source ~/.bash_profile
+else
+  echo "サポートされていないOSです。"
+  exit 1
 fi
