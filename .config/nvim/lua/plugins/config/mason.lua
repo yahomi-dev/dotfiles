@@ -9,7 +9,7 @@ require('mason').setup {
   },
 }
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client)
   -- LSPが持つフォーマット機能を無効化する
   client.server_capabilities.documentFormattingProvider = false
 end
@@ -18,19 +18,6 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local mason_lspconfig = require('mason-lspconfig')
-
-mason_lspconfig.setup {
-  ensure_installed = {
-    'lua_ls',
-    'jsonls',
-    'rust_analyzer',
-    'cssls',
-    'tailwindcss',
-    'vtsls',
-    'volar',
-    'prismals',
-  },
-}
 
 mason_lspconfig.setup_handlers {
   function(server_name)
