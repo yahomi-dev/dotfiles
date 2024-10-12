@@ -4,11 +4,12 @@ local actions = require('telescope.actions')
 telescope.setup {
   defaults = {
     -- sorting_strategy = 'ascending',
-    winblend = 4,
-    layout_strategy = 'vertical',
+    winblend = 25,
+    layout_strategy = 'horizontal',
     layout_config = {
-      height = 0.9,
-      width = 0.9,
+      preview_cutoff = 99,
+      height = 0.99,
+      width = 0.99,
     },
 
     --検索対象に含めないファイルを指定
