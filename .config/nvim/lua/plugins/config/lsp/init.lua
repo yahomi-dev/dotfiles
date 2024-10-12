@@ -2,7 +2,6 @@ local M = {}
 
 local lspconfig = require('lspconfig')
 local lsp = require('util.lsp')
-local on_attach = require('plugins.config.lsp.on_attach')
 local diagnostic_config = require('plugins.config.lsp.diagnostics')
 
 -- Diagnostic settings
