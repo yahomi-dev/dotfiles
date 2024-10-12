@@ -4,7 +4,6 @@ local lspconfig = require('lspconfig')
 local lsp = require('util.lsp')
 local on_attach = require('plugins.config.lsp.on_attach')
 local diagnostic_config = require('plugins.config.lsp.diagnostics')
-local keymaps = require('plugins.config.lsp.keymaps')
 
 -- Diagnostic settings
 vim.diagnostic.config(diagnostic_config)
@@ -33,18 +32,6 @@ M.setup_servers = function()
   -- }
 
   lspconfig.efm.setup {
-    on_attach = function(client, bufnr)
-      -- フォーマットをサポートしているか確認
-      if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_create_autocmd('BufWritePre', {
-          group = vim.api.nvim_create_augroup('LspFormatting', {}),
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format { async = false }
-          end,
-        })
-      end
-    end,
     init_options = { documentFormatting = true },
     settings = {
       languages = {
@@ -52,29 +39,14 @@ M.setup_servers = function()
       },
     },
     filetypes = { 'lua' },
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
   }
 
   lspconfig.biome.setup {
-    on_attach = function(client, bufnr)
-      if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_create_autocmd('BufWritePre', {
-          group = vim.api.nvim_create_augroup('LspFormatting', {}),
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format { async = true }
-          end,
-        })
-      end
-    end,
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
   }
 
   lspconfig.ts_ls.setup {
-    on_attach = function(client, bufnr)
-      -- ts_ls のフォーマットを無効化
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
-    end,
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
     -- root_dir = function(path)
     --   return lsp.find_node_root(vim.fs.dirname(path))
@@ -84,11 +56,29 @@ M.setup_servers = function()
 end
 
 -- Attach keymaps for LSP
+local keymaps = require('plugins.config.lsp.keymaps')
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     local bufnr = ev.buf
-    keymaps.setup_keymaps(bufnr) -- 正しく呼び出す
+
+    -- setting key map
+    keymaps.setup_keymaps(bufnr)
+
+    -- format on save
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = vim.api.nvim_create_augroup('LspFormatting', {}),
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format {
+          async = false,
+          timeout_ms = 3000,
+          filter = function(client)
+            return client.name ~= 'ts_ls'
+          end,
+        }
+      end,
+    })
   end,
 })
 
