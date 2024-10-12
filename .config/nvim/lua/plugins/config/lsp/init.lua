@@ -39,19 +39,15 @@ M.setup_servers = function()
       },
     },
     filetypes = { 'lua' },
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    capabilities = lsp.capabilities,
   }
 
   lspconfig.biome.setup {
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    capabilities = lsp.capabilities,
   }
 
   lspconfig.ts_ls.setup {
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    -- root_dir = function(path)
-    --   return lsp.find_node_root(vim.fs.dirname(path))
-    -- end,
-    -- filetypes = lsp.ft.js_like,
+    capabilities = lsp.capabilities,
   }
 end
 

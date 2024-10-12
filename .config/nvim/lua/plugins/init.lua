@@ -194,42 +194,6 @@ return {
       lsp.setup_servers()
     end,
   },
-  --
-  -- { 'williamboman/mason-lspconfig.nvim', lazy = true },
-  -- {
-  --   'williamboman/mason.nvim',
-  --   dependencies = { 'williamboman/mason-lspconfig.nvim' },
-  --   build = ':MasonUpdate',
-  --   config = function()
-  --     require('plugins.config.mason')
-  --   end,
-  -- },
-
-  -- }}}
-
-  --- Format / Lint {{{
-  -- {
-  --   'nvimtools/none-ls.nvim',
-  --   dependencies = {
-  --     'jayp0521/mason-null-ls.nvim',
-  --   },
-  --   config = function()
-  --     require('plugins.config.none-ls')
-  --   end,
-  -- },
-  -- {
-  --   'mhartington/formatter.nvim',
-  --   config = function()
-  --     require('plugins.config.formatter')
-  --   end,
-  -- },
-  --
-  -- {
-  --   'mfussenegger/nvim-lint',
-  --   config = function()
-  --     require('plugins.config.nvim-lint')
-  --   end,
-  -- },
   --- }}}
 
   -- Completion {{{
