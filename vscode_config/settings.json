@@ -1,0 +1,29 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "explorer.compactFolders": false,
+    "workbench.activityBar.location": "hidden",
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.focusActiveEditorGroupAndCloseSidebar",
+            "sequence": [
+                "workbench.action.focusActiveEditorGroup",
+                "workbench.action.closeSidebar"
+            ]
+        },
+        {
+            "command": "multiCommand.openFileAndCloseSidebar",
+            "sequence": [
+                "list.select",
+                "workbench.action.closeSidebar"
+            ]
+        }
+    ],
+    "editor.minimap.size": "fit",
+    "editor.formatOnSave": true,
+    "editor.minimap.showSlider": "always",
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.scrollbar.verticalScrollbarSize": 10
+}
