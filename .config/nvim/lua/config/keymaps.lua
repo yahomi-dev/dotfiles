@@ -39,6 +39,12 @@ vim.api.nvim_set_keymap('i', '<C-b>', '<Left>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-p>', '<Up>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-n>', '<Down>', { noremap = true })
 
+--検索時に画面中央になるように
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
+vim.keymap.set('n', '*', '*zz')
+vim.keymap.set('n', '#', '#zz')
+
 -- CRの入力をLFに
 vim.api.nvim_set_keymap('i', '<C-m>', '<CR>', { noremap = true })
 
