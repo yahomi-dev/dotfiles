@@ -11,6 +11,9 @@ PROMPT='
 %F{green}(%~) %F %F{cyan}$vcs_info_msg_0_%f
 %# '
 
+## bind
+bindkey '^U' push-line
+
 ## alias
 # vimのundo履歴をクリーンアップ
 alias cleanup_undo='find ~/.vim/undodir -type f -size +10M -exec rm {} \;'

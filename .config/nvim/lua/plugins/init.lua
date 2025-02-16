@@ -21,15 +21,6 @@ return {
   },
 
   {
-    -- コメントをいい感じに
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require('ts_context_commentstring').setup()
-    end,
-  },
-
-  {
     -- インデント補助
     'lukas-reineke/indent-blankline.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -38,6 +29,14 @@ return {
         scope = { enabled = false },
       }
     end,
+  },
+
+  {
+    -- コメントいい感じに
+    'folke/ts-comments.nvim',
+    opts = {},
+    event = 'VeryLazy',
+    enabled = vim.fn.has('nvim-0.10.0') == 1,
   },
 
   {
@@ -116,14 +115,14 @@ return {
   {
     'catppuccin/nvim',
     config = function()
-      require('plugins.config.catppuccin')
+      require('plugins.config.color-theme.catppuccin')
     end,
   },
 
   {
     'Shatur/neovim-ayu',
     config = function()
-      require('plugins.config.ayu')
+      require('plugins.config.color-theme.ayu')
     end,
   },
 
@@ -134,7 +133,14 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     -- Optional; default configuration will be used if setup isn't called.
     config = function()
-      require('plugins.config.everforest')
+      require('plugins.config.color-theme.everforest')
+    end,
+  },
+
+  {
+    'projekt0n/github-nvim-theme',
+    config = function()
+      require('plugins.config.color-theme.github-nvim')
     end,
   },
   -- }}}

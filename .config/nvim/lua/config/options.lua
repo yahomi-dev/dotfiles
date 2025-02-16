@@ -6,6 +6,7 @@ vim.scriptencoding = 'utf-8'
 -- visual
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.shiftround = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.signcolumn = 'yes'
