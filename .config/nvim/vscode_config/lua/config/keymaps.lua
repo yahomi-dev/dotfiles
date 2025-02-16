@@ -25,9 +25,8 @@ vim.api.nvim_set_keymap('n', '<Up>', 'gk', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gj', 'j', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gk', 'k', { noremap = true })
 
--- リーダーキーの設定
-vim.g.mapleader = ' '
-vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
+-- リーダーキーの設定(VSCode Neovim側(keybindings.jsonでspaceをzに割り当て))
+vim.g.mapleader = 'z'
 
 -- インサートモード中の移動をEmacs風に
 vim.api.nvim_set_keymap('i', '<C-p>', '<Nop>', { noremap = true })

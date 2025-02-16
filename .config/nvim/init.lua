@@ -32,6 +32,7 @@ else
   -- vim.cmd.colorscheme('ayu')
   vim.cmd.colorscheme('catppuccin')
   -- vim.cmd.colorscheme('everforest')
+  -- vim.cmd('colorscheme github_dark')
 
   vim.cmd([[
   :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC

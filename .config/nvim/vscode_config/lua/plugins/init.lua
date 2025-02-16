@@ -37,30 +37,6 @@ return {
     end,
   },
 
-  {
-    -- コメントいい感じに
-    'numToStr/Comment.nvim',
-    dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-    },
-    config = function()
-      require('Comment').setup {
-        toggler = {
-          ---Line-comment toggle keymap
-          line = 'gcc',
-          ---Block-comment toggle keymap
-          block = '<Leader><Leader>gbc',
-        },
-        opleader = {
-          ---Line-comment keymap
-          line = 'gc',
-          ---Block-comment keymap
-          block = '<Leader><Leader>gb',
-        },
-      }
-    end,
-  },
-
   -- 括弧補完、オブジェクト展開
   {
     'hrsh7th/nvim-insx',
