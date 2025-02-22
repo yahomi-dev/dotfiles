@@ -4,9 +4,19 @@ local t = ls.text_node
 local i = ls.insert_node
 
 return {
-
   s('hello', {
     t('println("Hello World!")'),
+  }),
+
+  s('arrowFunc', {
+    t('const '),
+    i(1, 'FuncName'),
+    t(' = (props: Props) {'),
+    t { '', '' },
+    t('\t'),
+    t('return;'),
+    t { '', '' },
+    t('}'),
   }),
 
   s('comp', {

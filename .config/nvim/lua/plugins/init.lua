@@ -6,6 +6,8 @@ return {
   -- common plugins {{{
   { 'nvim-lua/plenary.nvim', lazy = true },
 
+  { 'lambdalisue/nerdfont.vim' },
+
   { 'nvim-tree/nvim-web-devicons', lazy = true },
 
   { 'stevearc/dressing.nvim' },
@@ -33,52 +35,23 @@ return {
     end,
   },
 
+  -- コメント
   {
-    -- コメントいい感じに
     'folke/ts-comments.nvim',
     opts = {},
     event = 'VeryLazy',
     enabled = vim.fn.has('nvim-0.10.0') == 1,
   },
 
-  {
-    -- コメントいい感じに
-    'numToStr/Comment.nvim',
-    dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-    },
-    config = function()
-      require('Comment').setup {
-        toggler = {
-          ---Line-comment toggle keymap
-          line = 'gcc',
-          ---Block-comment toggle keymap
-          block = '<Leader><Leader>gbc',
-        },
-        opleader = {
-          ---Line-comment keymap
-          line = 'gc',
-          ---Block-comment keymap
-          block = '<Leader><Leader>gb',
-        },
-      }
-    end,
-  },
-
   -- 括弧補完、オブジェクト展開
   {
-    'hrsh7th/nvim-insx',
+    'windwp/nvim-autopairs',
     config = function()
-      require('insx.preset.standard').setup {
-        cmdline = {
-          enabled = true,
-        },
-      }
+      require('plugins.config.nvim-autopairs')
     end,
   },
 
   -- ハイライト系 {{{
-
   {
     -- 括弧に色付け
     'HiPhish/rainbow-delimiters.nvim',
@@ -90,12 +63,12 @@ return {
 
   --- ゴーストテキスト追加系 {{{
   {
-    -- FIXME: Not work
+    -- 閉じ括弧の行に開き括弧の情報を追加
     'haringsrob/nvim_context_vt',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    ft = { 'dart' },
+    ft = { 'javascript', 'typescript' },
     config = function()
-      require('nvim-context-vt').setup {}
+      require('nvim_context_vt').setup {}
     end,
   },
   --}}}
@@ -106,14 +79,12 @@ return {
     'delphinus/cellwidths.nvim',
     enabled = false,
     config = function()
-      require('cellwidths').setup {
-        name = 'default',
-      }
+      require('plugins.config.cellwidths')
     end,
   },
   -- }}
 
-  -- colorscheme {{{
+  -- カラースキーマ {{{
   {
     'catppuccin/nvim',
     config = function()
@@ -168,10 +139,10 @@ return {
   },
 
   {
-    'lambdalisue/gin.vim',
-    -- config = function()
-    --   require('plugins.config.gin')
-    -- end
+    'lambdalisue/vim-gin',
+    config = function()
+      require('plugins.config.vim-gin')
+    end,
   },
   -- }}}
 
@@ -199,6 +170,7 @@ return {
   -- }}}
 
   -- LSP setting {{{
+  { 'onsails/lspkind.nvim', lazy = true },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -223,14 +195,6 @@ return {
   { 'saadparwaiz1/cmp_luasnip', lazy = true },
   { 'ray-x/cmp-treesitter', lazy = true },
   { 'uga-rosa/cmp-latex-symbol', lazy = true },
-  -- {
-  --   'uga-rosa/cmp-dictionary',
-  --   dependencies = { 'nvim-lua/plenary.nvim' },
-  --   lazy = true,
-  --   config = function()
-  --     require('plugins.config.cmp-dictionary')
-  --   end,
-  -- },
   {
     'uga-rosa/cmp-dynamic',
     lazy = true,
@@ -238,7 +202,6 @@ return {
       require('plugins.config.cmp-dynamic')
     end,
   },
-  { 'onsails/lspkind.nvim', lazy = true },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -296,23 +259,17 @@ return {
     end,
   },
 
-  { 'lambdalisue/nerdfont.vim' },
   {
     'lambdalisue/fern-renderer-nerdfont.vim',
     dependencies = {
       'lambdalisue/fern.vim',
     },
   },
+
   { 'lambdalisue/glyph-palette.vim' },
 
   -- others
   { 'machakann/vim-sandwich' },
-  {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('plugins.config.nvim-autopairs')
-    end,
-  },
 
   -- {
   --   'monaqa/dial.nvim',
@@ -320,32 +277,4 @@ return {
   --     require('plugins.config.dial')
   --   end,
   -- },
-
-  -- {
-  --   'petertriho/nvim-scrollbar',
-  --   config = function()
-  --     local scrollbar = require('scrollbar')
-  --     scrollbar.setup {
-  --       show_in_active_only = true,
-  --       handle = {
-  --         blend = 0,
-  --         text = ' ',
-  --         color = '#3b3a40',
-  --         color_nr = 234,
-  --       },
-  --       marks = {
-  --         Search = { color = '#C9A554' },
-  --         Error = { color = '#685742' },
-  --         Warn = { color = '#B36D43' },
-  --         Info = { color = '#5f875f' },
-  --         Hint = { color = '#5f875f' },
-  --         Misc = { color = '#bb7744' },
-  --         Cursor = { color = '#666666', text = ' ' },
-  --       },
-  --     }
-  --   end,
-  -- },
-
-  -- neta
-  { 'seandewar/nvimesweeper' },
 }
