@@ -41,7 +41,7 @@ vim.api.nvim_set_keymap('n', 'vs', ':vsplit<CR><C-w>w', { noremap = true })
 
 --  va"をvi2"に
 for _, quote in ipairs { '"', "'", '`' } do
-  vim.keymap.set({ 'x', 'o' }, 'a' .. quote, '2i' .. quote)
+    vim.keymap.set({ 'x', 'o' }, 'a' .. quote, '2i' .. quote)
 end
 
 ---- VSCode設定
