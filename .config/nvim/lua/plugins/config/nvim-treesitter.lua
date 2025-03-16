@@ -1,6 +1,7 @@
 require('nvim-treesitter.configs').setup {
   sync_install = false,
   ensure_installed = {
+    'python',
     'typescript',
     'tsx',
     'javascript',

@@ -71,3 +71,4 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
