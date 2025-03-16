@@ -3,11 +3,11 @@
 --    : https://github.com/microsoft/vscode/blob/b1cddfafe0c054fbeb346a3d3dc9a58f504eb55b/src/vs/editor/common/core/editorColorRegistry.ts#L72-L77
 
 require('rainbow-delimiters.setup').setup {
-  highlight = {
-    'RainbowDelimiterYellow',
-    'RainbowDelimiterRed',
-    'RainbowDelimiterBlue',
-  },
+	highlight = {
+		'RainbowDelimiterYellow',
+		'RainbowDelimiterRed',
+		'RainbowDelimiterBlue',
+	},
 }
 
 vim.api.nvim_set_hl(0, 'RainbowDelimiterYellow', { fg = '#FFD700' })

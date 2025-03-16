@@ -13,13 +13,13 @@ if vim.g.vscode then
 else
 	-- wsl用コピペ設定
 	vim.cmd([[
-  if system('uname -a | grep microsoft') != ''
-    augroup myYank
-      autocmd!
-      autocmd TextYankPost * :call system('clip.exe', @")
-    augroup END
-  endif
-]])
+    if system('uname -a | grep microsoft') != ''
+      augroup myYank
+        autocmd!
+        autocmd TextYankPost * :call system('clip.exe', @")
+      augroup END
+    endif
+  ]])
 
 	require('config.options')
 
@@ -35,6 +35,6 @@ else
 	-- vim.cmd('colorscheme github_dark')
 
 	vim.cmd([[
-  :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
-]])
+    :autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
+  ]])
 end
