@@ -59,36 +59,36 @@ vim.api.nvim_set_keymap('n', 'vs', ':vsplit<CR><C-w>w', { noremap = true })
 
 --  va"をvi2"に
 for _, quote in ipairs { '"', "'", '`' } do
-  vim.keymap.set({ 'x', 'o' }, 'a' .. quote, '2i' .. quote)
+	vim.keymap.set({ 'x', 'o' }, 'a' .. quote, '2i' .. quote)
 end
 
 -- フルパスをクリップボードにコピー
 vim.keymap.set('n', '<leader>Y', function()
-  local path = vim.fn.expand('%:p') -- フルパス取得
-  vim.fn.setreg('+', path) -- クリップボードにコピー
-  vim.notify('Copied: ' .. path, vim.log.levels.INFO) -- 通知
+	local path = vim.fn.expand('%:p') -- フルパス取得
+	vim.fn.setreg('+', path) -- クリップボードにコピー
+	vim.notify('Copied: ' .. path, vim.log.levels.INFO) -- 通知
 end, { desc = 'Copy full file path to clipboard' })
 
 vim.keymap.set('n', '<leader>y', function()
-  -- 現在開いているファイルのフルパスを取得
-  local full_path = vim.fn.expand('%:p')
+	-- 現在開いているファイルのフルパスを取得
+	local full_path = vim.fn.expand('%:p')
 
-  -- Gitリポジトリのルートを取得（失敗したらnil）
-  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+	-- Gitリポジトリのルートを取得（失敗したらnil）
+	local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
 
-  -- Gitのルートディレクトリが取得でき、かつファイルがその配下にある場合
-  local final_path = full_path
-  if git_root and vim.v.shell_error == 0 then
-    local git_root_normalized = git_root:gsub('/$', '') -- 末尾の `/` を削除
-    if full_path:find(git_root_normalized, 1, true) == 1 then
-      -- Gitルートからの相対パスを取得
-      final_path = full_path:sub(#git_root_normalized + 2) -- `/` 分を考慮
-    end
-  end
+	-- Gitのルートディレクトリが取得でき、かつファイルがその配下にある場合
+	local final_path = full_path
+	if git_root and vim.v.shell_error == 0 then
+		local git_root_normalized = git_root:gsub('/$', '') -- 末尾の `/` を削除
+		if full_path:find(git_root_normalized, 1, true) == 1 then
+			-- Gitルートからの相対パスを取得
+			final_path = full_path:sub(#git_root_normalized + 2) -- `/` 分を考慮
+		end
+	end
 
-  -- クリップボードにコピー
-  vim.fn.setreg('+', final_path)
+	-- クリップボードにコピー
+	vim.fn.setreg('+', final_path)
 
-  -- 通知を表示
-  vim.notify('Copied: ' .. final_path, vim.log.levels.INFO)
+	-- 通知を表示
+	vim.notify('Copied: ' .. final_path, vim.log.levels.INFO)
 end, { desc = 'Copy Git-relative or full file path to clipboard' })
