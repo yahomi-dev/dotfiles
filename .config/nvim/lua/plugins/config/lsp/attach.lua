@@ -20,22 +20,32 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', ';r', '<Cmd>Telescope lsp_references<CR>', bufopts)
 		vim.keymap.set('n', ';a', vim.lsp.buf.code_action, bufopts)
 		vim.keymap.set('n', 'L', vim.diagnostic.open_float, bufopts)
+
 		vim.keymap.set('n', '<leader>fm', '<Cmd>Format<CR>', bufopts)
+		-- vim.keymap.set('n', '<leader>fm', function()
+		-- 	vim.lsp.buf.format {
+		-- 		async = false,
+		-- 		timeout_ms = 3000,
+		-- 		filter = function(client)
+		-- 			return client.name ~= 'ts_ls'
+		-- 		end,
+		-- 	}
+		-- end, bufopts)
 
 		-- format on save
-		vim.api.nvim_create_autocmd('BufWritePre', {
-			group = vim.api.nvim_create_augroup('LspFormatting', {}),
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format {
-					async = false,
-					timeout_ms = 3000,
-					filter = function(client)
-						return client.name ~= 'ts_ls'
-					end,
-				}
-			end,
-		})
+		-- vim.api.nvim_create_autocmd('BufWritePre', {
+		-- 	group = vim.api.nvim_create_augroup('LspFormatting', {}),
+		-- 	buffer = bufnr,
+		-- 	callback = function()
+		-- 		vim.lsp.buf.format {
+		-- 			async = false,
+		-- 			timeout_ms = 3000,
+		-- 			filter = function(client)
+		-- 				return client.name ~= 'ts_ls'
+		-- 			end,
+		-- 		}
+		-- 	end,
+		-- })
 	end,
 })
 
