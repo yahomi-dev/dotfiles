@@ -43,6 +43,6 @@ return {
 			}
 		end
 
-		require('conform').format { async = true, lsp_format = 'fallback', range = range }
+		require('conform').format { async = true, lsp_format = 'fallback', range = range, timeout_ms = 3000 }
 	end, { range = true }),
 }
