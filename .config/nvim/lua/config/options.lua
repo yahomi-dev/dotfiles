@@ -10,6 +10,7 @@ vim.opt.shiftround = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.signcolumn = 'yes'
+-- vim.opt.winborder = "rounded" -- 対応していないプラグインもあるため
 
 vim.opt.updatetime = 500
 vim.opt.laststatus = 3 -- ステータスラインが分割しないように

@@ -8,6 +8,12 @@ vim.keymap.set('n', 'gl', vim.diagnostic.setloclist)
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = require('util.augroup').lsp_group,
 	callback = function(ev)
+    ---- v0.11BuiltIn補完対応
+		-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		-- if client:supports_method('textDocument/completion') then
+		-- 	vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		-- end
+		--
 		local bufnr = ev.buf
 		local bufopts = { buffer = bufnr, silent = true }
 
@@ -48,21 +54,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- })
 	end,
 })
-
-vim.diagnostic.config {
-	virtual_text = {
-		prefix = '●', -- エラーメッセージの前に表示する文字を変更
-		spacing = 2, -- メッセージとライン間のスペース
-		format = function(diagnostic)
-			local code = diagnostic.code or '' -- コードがある場合は取得
-			local source = diagnostic.source or '' -- ソースがある場合は取得
-			return string.format('%s (%s: %s)', diagnostic.message, source, code)
-		end,
-	},
-	float = {
-		source = 'always', -- 常にエラーメッセージを表示
-		border = 'rounded', -- フロートウィンドウの境界を丸くする
-	},
-}
-
-require('lspconfig.ui.windows').default_options.border = 'rounded'
