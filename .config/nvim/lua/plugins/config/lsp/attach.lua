@@ -8,7 +8,7 @@ vim.keymap.set('n', 'gl', vim.diagnostic.setloclist)
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = require('util.augroup').lsp_group,
 	callback = function(ev)
-    ---- v0.11BuiltIn補完対応
+		---- v0.11BuiltIn補完対応
 		-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		-- if client:supports_method('textDocument/completion') then
 		-- 	vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
