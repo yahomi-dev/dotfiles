@@ -10,6 +10,7 @@ return {
 		},
 		config = function()
 			require('plugins.config.lsp.diagnostic')
+			-- require('plugins.config.lsp.completion')
 			require('plugins.config.lsp.format')
 			require('plugins.config.lsp.attach')
 			require('plugins.config.lsp.server-register')
