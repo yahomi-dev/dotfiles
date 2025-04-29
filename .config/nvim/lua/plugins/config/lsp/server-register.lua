@@ -14,18 +14,37 @@ local ensure_installed = {
 	'cssls',
 	'jsonls',
 	'lua_ls',
-	'prismals',
 	'rust_analyzer',
 	'solidity_ls',
 	'tailwindcss',
 	'ts_ls',
 	'volar',
-	'vtsls',
 }
 
+local mason_lspconfig = require('mason-lspconfig')
+
 require('mason-lspconfig').setup {
-	automatic_installation = true,
 	ensure_installed = ensure_installed,
 }
 
-vim.lsp.enable(ensure_installed)
+mason_lspconfig.setup_handlers {
+	function(server_name)
+		require('lspconfig')[server_name].setup {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { 'vim' },
+					},
+				},
+				json = {
+					schemas = require('schemastore').json.schemas(),
+					validate = { enable = true },
+				},
+				jsonc = {
+					schemas = require('schemastore').json.schemas(),
+					validate = { enable = true },
+				},
+			},
+		}
+	end,
+}
