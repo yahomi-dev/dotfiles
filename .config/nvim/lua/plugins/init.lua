@@ -261,6 +261,20 @@ return {
 	-- others
 	{ 'machakann/vim-sandwich' },
 
+	{
+		'echasnovski/mini.align',
+		config = function()
+			require('mini.align').setup {}
+		end,
+	},
+
+	{
+		'greggh/claude-code.nvim',
+		config = function()
+			require('plugins.config.claude-code')
+		end,
+	},
+
 	-- {
 	--   'monaqa/dial.nvim',
 	--   config = function()
