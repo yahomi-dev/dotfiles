@@ -9,3 +9,7 @@ packer_compiled.lua
 
 # Lua
 .luarc.json
+
+# Claude
+
+.CLAUDE.md
