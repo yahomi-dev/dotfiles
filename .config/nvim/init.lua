@@ -11,16 +11,6 @@ if vim.g.vscode then
 	vim.opt.rtp:prepend(vim.fn.stdpath('config') .. '/vscode_config')
 	dofile(vim.fn.stdpath('config') .. '/vscode_config/init.lua')
 else
-	-- wsl用コピペ設定
-	vim.cmd([[
-    if system('uname -a | grep microsoft') != ''
-      augroup myYank
-        autocmd!
-        autocmd TextYankPost * :call system('clip.exe', @")
-      augroup END
-    endif
-  ]])
-
 	require('config.options')
 
 	require('config.keymaps')
