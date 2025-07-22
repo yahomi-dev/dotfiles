@@ -11,13 +11,33 @@ PROMPT='
 %F{green}(%~) %F %F{cyan}$vcs_info_msg_0_%f
 %# '
 
-# alias
+## bind
+bindkey '^U' push-line
+
+## alias
+# vimのundo履歴をクリーンアップ
+alias cleanup_undo='find ~/.vim/undodir -type f -size +10M -exec rm {} \;'
+
+## テスト用のneovim起動
+alias nvim-test='nvim -u ~/nvim-test/init.lua'
+alias nvim='nvim'
+alias snvim='NVIM_APPNAME=nvim-sub nvim'
+
 alias ll="exa -l -h -@ -mU --icons --git --time-style=long-iso --color=automatic --group-directories-first"
 alias l="ll -aa"
 
 alias du='du -h'
 alias .z='nvim ~/.zshrc'
 alias .n='cd ~/.config/nvim && nvim .'
+alias cdd='cd ~/dotfiles'
+alias cdf='cd ~/fe'
+alias cdr='cd ~/dev/rust'
+alias cdv='cd ~/test-vue/vue-application'
+alias cda='cd ~/atc/rust/root'
+alias cdw='cd ~/.config/wezterm'
+
+# git alias
+alias gita="git commit --allow-empty -m"
 
 setopt auto_pushd
 setopt pushd_ignore_dups
@@ -34,4 +54,21 @@ function gitmain() {
     git config --global user.name "yahomi-dev"
     git config --global user.email "yahomi.dev@gmail.com"
 }
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH=$HOME/bin:$PATH
+
+export DENO_INSTALL="/Users/yahomi/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# bun completions
+[ -s "/Users/yahomi/.bun/_bun" ] && source "/Users/yahomi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"

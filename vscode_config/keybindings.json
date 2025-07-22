@@ -1,0 +1,76 @@
+// Place your key bindings in this file to override the defaults
+[
+  // Esc
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.closeMessages",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.terminal.focusFind",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "closeFindWidget",
+    "when": "findWidgetVisible"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.closePanel",
+    "when": "panelFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.exitZenMode",
+    "when": "inZenMode"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "multiCommand.focusActiveEditorGroupAndCloseSidebar",
+    "when": "!editorFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "hideSuggestWidget",
+    "when": "suggestWidgetVisible"
+  },
+  // ファイラ設定
+  {
+    "key": "shift+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "shift+d",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "l",
+    "command": "multiCommand.openFileAndCloseSidebar",
+    "when": "explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "enter",
+    "command": "multiCommand.openFileAndCloseSidebar",
+    "when": "explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "space",
+    "command": "workbench.action.closeSidebar",
+    "when": "explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-cursorUp",
+    "when": "textInputFocus"
+  },
+  // ファインダー
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "textInputFocus"
+  },
+]
