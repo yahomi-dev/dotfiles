@@ -23,10 +23,21 @@ return {
 				-- NOTE: svelteのformatはsvelteserverのやつを使う。
 				-- LSPのFormatterは`lsp_fallback=true`をしたのでOK
 				-- svelte = { { "svelteserver" } },
+
+				java = { 'google_java_format' },
 			},
 			formatters = {
 				shfmt = {
 					prepend_args = { '-i', '2' },
+				},
+
+				google_java_format = {
+					command = 'google-java-format',
+					args = {
+						'--aosp', -- Android Open Source Project style（4スペース）を使用する場合
+						'-',
+					},
+					stdin = true,
 				},
 			},
 		}

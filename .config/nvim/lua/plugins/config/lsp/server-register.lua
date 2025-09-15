@@ -19,6 +19,7 @@ local servers = {
 	'vtsls',
 	'volar',
 	'prismals',
+	-- 'jdtls', -- nvim-jdtlsで有効化
 }
 
 vim.lsp.config('lua_ls', {
