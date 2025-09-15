@@ -275,6 +275,12 @@ return {
 		end,
 	},
 
+	-- java
+	{
+		'mfussenegger/nvim-jdtls',
+		ft = 'java',
+	},
+
 	-- {
 	--   'monaqa/dial.nvim',
 	--   config = function()
