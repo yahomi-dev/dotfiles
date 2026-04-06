@@ -22,6 +22,7 @@ alias cleanup_undo='find ~/.vim/undodir -type f -size +10M -exec rm {} \;'
 alias nvim-test='nvim -u ~/nvim-test/init.lua'
 alias nvim='nvim'
 alias snvim='NVIM_APPNAME=nvim-sub nvim'
+alias pnvim='NVIM_APPNAME=nvim-pack nvim'
 
 alias ll="exa -l -h -@ -mU --icons --git --time-style=long-iso --color=automatic --group-directories-first"
 alias l="ll -aa"
@@ -35,6 +36,9 @@ alias cdr='cd ~/dev/rust'
 alias cdv='cd ~/test-vue/vue-application'
 alias cda='cd ~/atc/rust/root'
 alias cdw='cd ~/.config/wezterm'
+
+alias ccc='claude --continue --allow-dangerously-skip-permissions'
+alias ccn='CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 claude --continue --allow-dangerously-skip-permissions'
 
 # git alias
 alias gita="git commit --allow-empty -m"
@@ -73,3 +77,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 eval "$(mise activate zsh)"
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR=nvim
