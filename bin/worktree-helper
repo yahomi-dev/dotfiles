@@ -1,0 +1,81 @@
+#!/bin/bash
+#
+# git worktree ヘルパー
+#
+# 使い方:
+#   worktree-helper start <branch-name>   worktree を作成
+#   worktree-helper done  <branch-name>   worktree を削除
+#   worktree-helper list                  一覧表示
+#
+
+WORK_DIR="$HOME/work"
+
+case "$1" in
+  start)
+    if [ -z "$2" ]; then
+      echo "使い方: worktree-helper start <branch-name>"
+      exit 1
+    fi
+    BRANCH="$2"
+    TARGET="$WORK_DIR/$BRANCH"
+
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+      echo "エラー: git リポジトリ内で実行してください"
+      exit 1
+    fi
+
+    mkdir -p "$WORK_DIR"
+
+    if git show-ref --verify --quiet "refs/heads/$BRANCH"; then
+      git worktree add "$TARGET" "$BRANCH"
+    else
+      git worktree add -b "$BRANCH" "$TARGET"
+    fi
+
+    echo ""
+    echo "worktree を作成しました: $TARGET"
+    echo ""
+    echo "次のステップ:"
+    echo "  cd $TARGET && claude"
+    echo ""
+    echo "作業が終わったら:"
+    echo "  cd $(pwd) && worktree-helper done $BRANCH"
+    ;;
+
+  done)
+    if [ -z "$2" ]; then
+      echo "使い方: worktree-helper done <branch-name>"
+      echo ""
+      echo "現在の worktree:"
+      git worktree list
+      exit 1
+    fi
+    BRANCH="$2"
+    TARGET="$WORK_DIR/$BRANCH"
+
+    if [ ! -d "$TARGET" ]; then
+      echo "エラー: $TARGET が見つかりません"
+      exit 1
+    fi
+
+    echo "worktree を削除: $TARGET"
+    read -p "続行？ (y/N): " confirm
+    if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ]; then
+      git worktree remove "$TARGET"
+      echo "削除しました。merge するには: git merge $BRANCH"
+    else
+      echo "キャンセル"
+    fi
+    ;;
+
+  list)
+    git worktree list
+    ;;
+
+  *)
+    echo "使い方:"
+    echo "  worktree-helper start <branch>  worktree 作成"
+    echo "  worktree-helper done <branch>   worktree 削除"
+    echo "  worktree-helper list            一覧"
+    ;;
+esac
