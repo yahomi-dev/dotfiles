@@ -59,6 +59,15 @@ for _, quote in ipairs { '"', "'", '`' } do
   map({ 'x', 'o' }, 'a' .. quote, '2i' .. quote)
 end
 
+-- インサートモードで直前に打った文字列を大文字に
+vim.keymap.set('i', '<C-l>', function()
+  local line = vim.fn.getline('.')
+  local col = vim.fn.getpos('.')[3]
+  local substring = line:sub(1, col - 1)
+  local result = vim.fn.matchstr(substring, [[\v<(\k(<)@!)*$]])
+  return '<C-w>' .. result:upper()
+end, { expr = true })
+
 -- ファイルパスをクリップボードにコピー
 nmap('<leader>Y', function()
   local path = vim.fn.expand('%:p')
