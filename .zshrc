@@ -20,9 +20,9 @@ alias cleanup_undo='find ~/.vim/undodir -type f -size +10M -exec rm {} \;'
 
 ## テスト用のneovim起動
 alias nvim-test='nvim -u ~/nvim-test/init.lua'
-alias nvim='nvim'
+alias nvim='NVIM_APPNAME=nvim-pack nvim'
 alias snvim='NVIM_APPNAME=nvim-sub nvim'
-alias pnvim='NVIM_APPNAME=nvim-pack nvim'
+alias pnvim='nvim'
 
 alias ll="exa -l -h -@ -mU --icons --git --time-style=long-iso --color=automatic --group-directories-first"
 alias l="ll -aa"
