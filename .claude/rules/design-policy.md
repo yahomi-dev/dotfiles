@@ -1,0 +1,1 @@
+../../../ghq/github.com/yahomi-dev/coding-style/.claude/rules/design-policy.md

@@ -4,4 +4,4 @@
 2. ```cd dotfiles```
 3. ```sh install.sh```
 
-nodeのバージョン管理はVoltaを想定。
+node等のランタイム管理はmise（Brewfileでインストール）。Claude Code本体はネイティブインストーラ（`curl -fsSL https://claude.ai/install.sh | bash`）。

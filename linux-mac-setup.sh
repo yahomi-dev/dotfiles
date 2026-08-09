@@ -30,6 +30,13 @@ ln -sf "$DOTFILES_DIR/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 ln -sfn "$DOTFILES_DIR/.claude/rules" "$HOME/.claude/rules"
 ln -sfn "$DOTFILES_DIR/.claude/skills" "$HOME/.claude/skills"
 ln -sfn "$DOTFILES_DIR/.claude/agents" "$HOME/.claude/agents"
+ln -sfn "$DOTFILES_DIR/.claude/commands" "$HOME/.claude/commands"
+ln -sf "$DOTFILES_DIR/.claude/statusline.mjs" "$HOME/.claude/statusline.mjs"
+
+# rules 内の typescript/react/design-policy は ~/ghq の coding-style リポへの相対 symlink
+if [ ! -d "$HOME/ghq/github.com/yahomi-dev/coding-style" ]; then
+  echo "NOTE: coding-style が未取得のため一部ルールがリンク切れです -> ghq get https://github.com/yahomi-dev/coding-style.git"
+fi
 ln -sf "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
 git config --global core.excludesFile "$HOME/.gitignore_global"
 
