@@ -22,6 +22,7 @@ fi
 # シンボリックリンクの作成
 ln -sf "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+ln -sf "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
 
 # Claude Code の設定（既存 ~/.claude/ を壊さず、管理対象だけ symlink）
 mkdir -p "$HOME/.claude"

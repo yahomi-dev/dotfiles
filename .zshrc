@@ -82,6 +82,16 @@ if [ -d "$(brew --prefix 2> /dev/null)/share/zsh/site-functions" ]; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
 fi
 
+# 自前の補完定義 (docker completion zsh の出力など) を最優先で読む
+fpath=(~/.zsh/completions $fpath)
+
+# Docker Desktop 停止中は /usr/share/zsh/vendor-completions/_docker が壊れたシンボリックリンクになり compinit が警告を出す。
+# リンク先の /mnt/wsl/docker-desktop/ は Docker Desktop 起動中しかマウントされないため。
+# 壊れているときだけディレクトリごと fpath から外す。
+if [[ -L /usr/share/zsh/vendor-completions/_docker && ! -e /usr/share/zsh/vendor-completions/_docker ]]; then
+  fpath=(${fpath:#/usr/share/zsh/vendor-completions})
+fi
+
 autoload -Uz compinit
 compinit
 
