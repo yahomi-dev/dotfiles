@@ -206,7 +206,7 @@ CSS はブラウザへの「提案」であり、厳密な命令ではない。�
 ### 上限と下限は `and` でつなぐ
 
 上限と下限を両方指定するときは、二重レンジ (`A > inline-size >= B`) ではなく `and` でつなぐ。
-Biome の CSS パーサは `calc()` を含む二重レンジを解析できず、構文エラーになる (Stylelint の `project/no-double-range` で検出する)。
+Biome の CSS パーサは `calc()` を含む二重レンジを解析できず、構文エラーになる。
 
 ```css
 /* 正しい — and でつなぐ */
@@ -504,10 +504,10 @@ AI 向けの判断ルール:
 ```css
 /* まずは通常のレスポンシブ対応を行う */
 :scope {
-  container: --aticle-cards / inline-size;
+  container: --article-cards / inline-size;
 }
 
-@container --aticle-cards (inline-size < calc(200 / 16 * 1rem)) {
+@container --article-cards (inline-size < calc(200 / 16 * 1rem)) {
   ._card {
     /* 最小幅未満では縮小を許可するが、1 を超えて拡大しない */
     /* biome-ignore lint/correctness/noUnknownFunction: progress() は CSS Values 5 の関数で Biome が未対応 */
