@@ -203,6 +203,19 @@ CSS はブラウザへの「提案」であり、厳密な命令ではない。�
 @container --card (min-width: calc(420 / 16 * 1rem)) { ... }
 ```
 
+### 上限と下限は `and` でつなぐ
+
+上限と下限を両方指定するときは、二重レンジ (`A > inline-size >= B`) ではなく `and` でつなぐ。
+Biome の CSS パーサは `calc()` を含む二重レンジを解析できず、構文エラーになる (Stylelint の `project/no-double-range` で検出する)。
+
+```css
+/* 正しい — and でつなぐ */
+@container --card (inline-size >= calc(420 / 16 * 1rem)) and (inline-size < calc(720 / 16 * 1rem)) { ... }
+
+/* 禁止 — 二重レンジ */
+@container --card (calc(720 / 16 * 1rem) > inline-size >= calc(420 / 16 * 1rem)) { ... }
+```
+
 ### コンテナクエリでは `inline-size` を使う
 
 コンテナクエリは論理的な方向指定が前提のため、`width` ではなく `inline-size` を使用する。
@@ -272,7 +285,7 @@ CSS はブラウザへの「提案」であり、厳密な命令ではない。�
 
 ```css
 ._card-group {
-  @container --card-group (calc(160 / 16 * 1rem * 6 + 24 / 16 * 1rem * 5) > inline-size >= calc(160 / 16 * 1rem * 4 + 24 / 16 * 1rem * 3)) {
+  @container --card-group (inline-size >= calc(160 / 16 * 1rem * 4 + 24 / 16 * 1rem * 3)) and (inline-size < calc(160 / 16 * 1rem * 6 + 24 / 16 * 1rem * 5)) {
     & > :nth-child(2n + 1):nth-last-child(1) {
       /* 奇数番目かつ最後の1つの要素を2列目から開始（中央寄せ） */
       grid-column-start: 2;
@@ -497,6 +510,7 @@ AI 向けの判断ルール:
 @container --aticle-cards (inline-size < calc(200 / 16 * 1rem)) {
   ._card {
     /* 最小幅未満では縮小を許可するが、1 を超えて拡大しない */
+    /* biome-ignore lint/correctness/noUnknownFunction: progress() は CSS Values 5 の関数で Biome が未対応 */
     zoom: min(progress(100cqi, 0px, calc(200 / 16 * 1rem)), 1);
   }
 }
