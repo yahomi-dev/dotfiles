@@ -53,6 +53,18 @@ if [ -s "$BUN_INSTALL/_bun" ]; then
   source "$BUN_INSTALL/_bun"
 fi
 
+# pnpm: pnpm setup の既定の置き場所が Mac と Linux で違う
+if [ "$IS_MAC" = 1 ]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+else
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
+
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 if [ "$IS_WSL" = 1 ]; then
   export PATH="$PATH:$HOME/jpm/bin"
 fi
@@ -173,10 +185,17 @@ alias gbm='git branch --merged | grep -v "^\*" | grep -vE "^\s*(dev|main|master)
 alias gbmd='git branch --merged | grep -v "^\*" | grep -vE "^\s*(dev|main|master)$" | xargs -r git branch -d'
 
 # claude alias
-alias ccc='claude -c --dangerously-skip-permissions'
 alias ccd='claude --dangerously-skip-permissions'
-alias ccn='CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 claude -c --dangerously-skip-permissions'
 alias wclaude='CLAUDE_CONFIG_DIR=~/.claude-work claude'
+
+# 仕事用の設定で起動し、その間だけ端末の背景色を変える (終わったら端末の既定の色に戻す)
+work-claude() {
+  (
+    trap 'printf "\e]111\a" > /dev/tty' EXIT INT TERM
+    printf '\e]11;#1e1a14\a' > /dev/tty
+    CLAUDE_CONFIG_DIR=$HOME/.claude-work command claude "$@"
+  )
+}
 
 # ============================================================
 # alias (Mac 固有)
