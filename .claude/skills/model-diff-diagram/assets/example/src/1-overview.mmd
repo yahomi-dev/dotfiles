@@ -1,0 +1,6 @@
+flowchart LR
+    customers["顧客<br>顧客 / 住所"]
+    catalog["商品<br>商品 / 在庫"]
+    orders["注文<br>注文 / 注文明細 / 支払い / クーポン"]
+    customers -->|"顧客が注文する"| orders
+    catalog -->|"商品を注文明細に載せる"| orders

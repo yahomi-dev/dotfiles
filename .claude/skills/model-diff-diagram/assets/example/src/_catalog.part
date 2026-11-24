@@ -1,0 +1,10 @@
+    class 商品 {
+        <<products>>
+        商品名
+        価格
+        販売中/停止 状態
+    }
+    class 在庫 {
+        <<stocks>>
+        数量
+    }

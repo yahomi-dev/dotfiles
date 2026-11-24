@@ -1,0 +1,11 @@
+    class 顧客 {
+        <<customers>>
+        表示名
+        メールアドレス
+        電話番号
+    }
+    class 住所 {
+        <<addresses>>
+        郵便番号
+        住所の行
+    }

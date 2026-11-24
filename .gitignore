@@ -32,10 +32,16 @@ packer_compiled.lua
 # design / impl / test-cases / test-impl は coding-style リポへの symlink なので末尾に / を付けない
 !.claude/skills/
 .claude/skills/*
+!.claude/skills/aws-arch-diagram/
 !.claude/skills/daily-report/
 !.claude/skills/decision-coach/
+!.claude/skills/erd-no-overlap/
 !.claude/skills/explainer-video/
 !.claude/skills/ghq-migrate/
+!.claude/skills/model-diff-diagram/
+# AWS の公式アイコンは再配布しない (scripts/fetch_icons.sh で公式の配布物から取得する)
+.claude/skills/aws-arch-diagram/assets/icons/
+__pycache__/
 !.claude/skills/design
 !.claude/skills/impl
 !.claude/skills/test-cases

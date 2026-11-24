@@ -1,0 +1,44 @@
+erDiagram
+    customers ||--o{ orders : "注文した顧客 (restrict)"
+    customers ||--o{ addresses : "登録した顧客 (cascade)"
+    orders ||--|{ order_items : "cascade"
+    products ||--o{ order_items : "restrict"
+    orders ||--o| shipments : "配送する注文 (cascade)"
+
+    customers {
+        integer id PK
+        text email UK
+        text display_name
+        timestamptz created_at
+    }
+    addresses {
+        integer id PK
+        integer customer_id FK
+        text postal_code
+        text line1
+    }
+    orders {
+        integer id PK
+        integer customer_id FK
+        text status
+        integer discount_amount
+        timestamptz ordered_at
+    }
+    order_items {
+        integer order_id PK
+        integer line_no PK
+        integer product_id FK
+        integer quantity
+        integer unit_price
+    }
+    products {
+        integer id PK
+        text name
+        integer price?
+    }
+    shipments {
+        integer order_id FK
+        text carrier
+        text tracking_no?
+        timestamptz shipped_at?
+    }
