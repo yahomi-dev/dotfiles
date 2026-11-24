@@ -3,6 +3,9 @@
 # ========================================
 .claude/
 .ai-notes/
+# リポジトリ側で .claude/ を追跡対象に戻していても、手元の許可設定と状態ファイルは混ぜない
+**/.claude/settings.local.json
+**/.claude-session-state.md
 
 # OS
 .DS_Store

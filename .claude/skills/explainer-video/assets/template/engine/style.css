@@ -1,0 +1,129 @@
+/* style.css — 舞台 (1600x900 の論理座標) と部品の見た目。動きは CSS ではなく engine/*.js が t から決める */
+/* CSS の transition / animation は録画をガタつかせるので全面禁止 */
+*, *::before, *::after { box-sizing: border-box; transition: none !important; animation: none !important; }
+
+html, body { margin: 0; height: 100%; background: #0b0d12; overflow: hidden; }
+#viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+#stage {
+  position: relative; width: 1600px; height: 900px; overflow: hidden;
+  background: var(--bg); color: var(--fg); font-family: var(--font);
+  transform-origin: center center; line-height: 1.4;
+}
+#stage .bg-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--dot) 1.6px, transparent 1.8px);
+  background-size: 32px 32px;
+}
+#stage .bg-vig { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, transparent 55%, var(--bg) 100%); }
+
+/* ---- 場面 ---- */
+.scene { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+/* カメラの視野 = 字幕の帯を除いた 1600x730。ズームした画面はここで切られ、字幕に重ならない */
+.clip { position: absolute; left: 0; top: 0; width: 1600px; height: 730px; overflow: hidden; }
+.camera { position: absolute; inset: 0; transform-origin: 0 0; }
+.fx { position: absolute; inset: 0; pointer-events: none; }
+
+/* ---- 常時パネル (カメラの外、字幕の上。TIMELINE.panel) ---- */
+.panel { position: absolute; left: 0; top: 0; width: 1600px; height: 730px; pointer-events: none; }
+.panel svg { position: absolute; left: 0; top: 0; width: 1600px; height: 730px; overflow: visible; }
+
+/* ---- 字幕 (カメラの外、画面下) ---- */
+.subs { position: absolute; left: 0; right: 0; bottom: 0; height: 170px; text-align: center; pointer-events: none; }
+.subs .kicker { position: absolute; left: 0; right: 0; top: 28px; font-family: var(--mono); font-size: 17px; font-weight: 700; letter-spacing: 3px; color: var(--accent); }
+.subs .caption { position: absolute; left: 60px; right: 60px; top: 56px; font-size: 36px; font-weight: 700; color: var(--fg); white-space: nowrap; }
+.subs .dots { position: absolute; left: 0; right: 0; bottom: 42px; display: flex; justify-content: center; gap: 14px; }
+.subs .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--edge); }
+.subs .dot.on { background: var(--fg); }
+.stamp { position: absolute; right: 24px; top: 20px; font-family: var(--mono); font-size: 22px; color: #ff5577; }
+
+/* ---- タイトル / 締め ---- */
+.title-scene { position: absolute; inset: 0 0 170px 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 22px; padding: 0 120px; }
+.title-scene .bar { width: 72px; height: 6px; border-radius: 3px; background: var(--accent); }
+.title-scene h1 { margin: 0; font-size: 64px; font-weight: 900; line-height: 1.3; }
+.title-scene p { margin: 0; font-size: 28px; color: var(--dim); }
+.outro-scene h1 { font-size: 52px; }
+
+/* ---- カーソルとクリック ---- */
+.cursor { position: absolute; width: 30px; height: 30px; transform-origin: 3px 2px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45)); }
+.ripple { position: absolute; border: 3px solid var(--accent); border-radius: 50%; transform: translate(-50%, -50%); }
+
+/* ---- モック画面の窓 ---- */
+.win { position: absolute; background: #fff; color: #1f2937; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08); font-family: var(--font); }
+.win-bar { position: absolute; left: 0; right: 0; top: 0; height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #f3f4f6; border-bottom: 1px solid #e5e7eb; }
+.win-dot { width: 12px; height: 12px; border-radius: 50%; }
+.win-url { margin: 0 auto; min-width: 420px; height: 28px; line-height: 28px; padding: 0 14px; border-radius: 8px; background: #fff; border: 1px solid #e5e7eb; color: #6b7280; font-size: 14px; font-family: var(--mono); text-align: center; }
+.win-title { margin: 0 auto; color: #6b7280; font-size: 14px; }
+.win-body { position: absolute; left: 0; right: 0; top: 44px; bottom: 0; overflow: hidden; }
+.win-none .win-body, .win-phone .win-body { top: 0; }
+.win-phone { border-radius: 40px; border: 10px solid #111827; }
+
+/* ---- モック画面の部品 (白い業務アプリ風) ---- */
+.app { display: flex; flex-direction: column; height: 100%; }
+.app-header { display: flex; align-items: center; gap: 14px; height: 60px; padding: 0 28px; border-bottom: 1px solid #e5e7eb; font-weight: 700; font-size: 20px; }
+.app-header .logo { width: 28px; height: 28px; border-radius: 8px; background: var(--accent); }
+.app-header .spacer { flex: 1; }
+.app-header .avatar { width: 32px; height: 32px; border-radius: 50%; background: #d1d5db; }
+.app-body { flex: 1; display: flex; gap: 24px; padding: 24px 28px; min-height: 0; }
+.pane { flex: 1; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pane-title { font-size: 15px; font-weight: 700; color: #6b7280; letter-spacing: 1px; }
+.field { position: relative; padding: 12px 16px; border: 1.5px solid #d1d5db; border-radius: 10px; font-size: 18px; line-height: 1.6; color: #9ca3af; background: #fff; white-space: pre-wrap; word-break: break-all; }
+.field.multiline { flex: 1; min-height: 160px; }
+.field.typed { color: #111827; border-color: var(--accent); }
+.field .caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 1px; vertical-align: -3px; background: #111827; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 10px; border: 1.5px solid #d1d5db; background: #fff; color: #111827; font-size: 18px; font-weight: 700; transform-origin: center; }
+.btn.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+.btn.small { padding: 8px 16px; font-size: 15px; }
+.btn.pressed { transform: scale(0.95); filter: brightness(0.9); }
+.row { display: flex; align-items: center; gap: 12px; }
+.row.right { justify-content: flex-end; }
+.card { padding: 18px 20px; border: 1px solid #e5e7eb; border-radius: 12px; background: #f9fafb; }
+.card-title { font-size: 15px; font-weight: 700; color: #6b7280; margin-bottom: 10px; }
+.list { display: flex; flex-direction: column; gap: 10px; }
+.item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #fff; border: 1px solid #e5e7eb; font-size: 18px; line-height: 1.5; }
+.item .num { flex: none; width: 28px; height: 28px; border-radius: 50%; background: #2563eb; color: #fff; font-size: 14px; font-weight: 700; display: grid; place-items: center; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; background: #e0f2fe; color: #0369a1; }
+.chat { display: flex; flex-direction: column; gap: 12px; }
+.msg { max-width: 72%; padding: 12px 16px; border-radius: 14px; font-size: 18px; line-height: 1.5; }
+.msg.user { align-self: flex-end; background: #2563eb; color: #fff; border-bottom-right-radius: 4px; }
+.msg.bot { align-self: flex-start; background: #f3f4f6; color: #111827; border-bottom-left-radius: 4px; }
+.toast { position: absolute; right: 24px; bottom: 24px; padding: 12px 20px; border-radius: 10px; background: #111827; color: #fff; font-size: 16px; font-weight: 700; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); }
+.toast.top { bottom: auto; top: 24px; }
+.muted { color: #6b7280; }
+.mark { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+.table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.table th, .table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
+.table th { color: #6b7280; font-weight: 700; font-size: 14px; }
+
+/* ---- 仕組みの場面 (暗い背景に大きく) ---- */
+.mech { position: absolute; left: 0; right: 0; top: 0; height: 730px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 36px; padding: 40px 100px; }
+.mech.free { display: block; }
+.mech.free > * { position: absolute; }
+.m-text { font-size: 34px; line-height: 1.7; font-weight: 700; max-width: 1400px; text-align: center; transform-origin: center; }
+.m-text.split { font-size: 24px; font-weight: 400; color: var(--dim); }
+.m-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: 1400px; }
+.chip { padding: 10px 22px; border-radius: 999px; border: 2px solid var(--c); color: var(--fg); font-size: 24px; background: rgba(255, 255, 255, 0.04); white-space: nowrap; }
+.chip.mark { outline: none; background: var(--c); color: #0b0d12; font-weight: 700; }
+.chip.dim { opacity: 0.35; }
+.m-bars { position: relative; width: 1200px; }
+.bar-row { position: absolute; left: 0; right: 0; height: 48px; display: flex; align-items: center; gap: 18px; }
+.bar-row.mark { outline: none; }
+.bar-row.mark .bar-label { color: var(--c); font-weight: 700; }
+.bar-label { width: 520px; text-align: right; font-size: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; height: 22px; border-radius: 11px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 11px; background: var(--c); }
+.bar-val { width: 90px; font-family: var(--mono); font-size: 20px; color: var(--dim); }
+.m-note { font-size: 24px; color: var(--dim); text-align: center; max-width: 1200px; line-height: 1.6; }
+.m-note b, .m-text b { color: var(--accent); }
+.m-number { display: flex; align-items: baseline; gap: 14px; font-family: var(--mono); }
+.m-number .val { font-size: 110px; font-weight: 700; line-height: 1; color: var(--accent); }
+.m-number .unit { font-size: 32px; color: var(--dim); font-family: var(--font); }
+.m-boxes { position: relative; display: flex; align-items: center; gap: 90px; }
+.box { position: relative; min-width: 240px; padding: 22px 30px; border-radius: 16px; background: var(--card); border: 2px solid var(--c); text-align: center; }
+.box .box-label { font-size: 26px; font-weight: 700; }
+.box .box-sub { margin-top: 4px; font-size: 16px; color: var(--dim); font-family: var(--mono); }
+.box.mark { outline: none; box-shadow: 0 0 0 4px var(--c), 0 0 40px var(--c); }
+.m-boxes svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.m-html { font-size: 24px; }
+
+/* ---- 構成図の場面 ---- */
+.arch-scene svg { position: absolute; left: 0; top: 0; width: 1600px; height: 730px; }

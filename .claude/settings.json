@@ -1,0 +1,91 @@
+{
+  "env": {
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "CLAUDE_CODE_THRIFTY_SONIC": "false",
+    "EDITOR": "nvim",
+    "NVIM_APPNAME": "nvim-pack"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git push --force-with-lease:*)",
+      "Bash(glab mr merge:*)",
+      "Bash(~/.claude/scripts/glab-upload-png.sh *)",
+      "mcp__links-pages__upload_page"
+    ],
+    "deny": [
+      "Read(~/memo/token/**)",
+      "Read(~/.git-credentials)",
+      "Read(~/.config/glab-cli/**)",
+      "Read(~/**/credentials.json)",
+      "Read(~/**/token.json)",
+      "Bash(cat */credentials.json)",
+      "Bash(cat */token.json)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus",
+  "disableClaudeAiConnectors": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/deny-ai-trailer.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/after-compact.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/require-japanese.py"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node ~/.claude/statusline-v2.mjs",
+    "padding": 0
+  },
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "xhigh"
+    },
+    "claude-opus-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-fable-5-2": {
+      "effortLevel": "high"
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
+}

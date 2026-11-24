@@ -1,0 +1,17 @@
+{
+  "app": "在庫みはり",
+  "note": "テスト用の架空データ。2026-11-02 の朝の在庫 CSV を 1 回チェックした記録という設定",
+  "csvName": "stock_1102.csv",
+  "rows": [
+    { "sku": "A-102", "name": "段ボール M", "count": 34, "threshold": 50 },
+    { "sku": "B-220", "name": "緩衝材 ロール", "count": 120, "threshold": 40 },
+    { "sku": "C-015", "name": "ガムテープ", "count": 8, "threshold": 30 },
+    { "sku": "C-031", "name": "伝票 (A5)", "count": 410, "threshold": 100 },
+    { "sku": "D-077", "name": "手袋 L", "count": 22, "threshold": 24 },
+    { "sku": "D-090", "name": "手袋 M", "count": 95, "threshold": 24 }
+  ],
+  "flagged": ["A-102", "C-015", "D-077"],
+  "slackMessage": "【在庫みはり】しきい値を下回った品が 3 件あります\n・段ボール M: 34 (しきい値 50)\n・ガムテープ: 8 (しきい値 30)\n・手袋 L: 22 (しきい値 24)",
+  "slackChannel": "#倉庫-発注",
+  "elapsedMs": 310
+}

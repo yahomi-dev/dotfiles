@@ -11,10 +11,37 @@ packer_compiled.lua
 .luarc.json
 
 # Claude
-CLAUDE.md
+# dotfiles 直下の CLAUDE.md (このリポの作業用) は管理しない。~/.claude に入れる .claude/CLAUDE.md は管理する
+/CLAUDE.md
 !.claude/
 .claude/*
+!.claude/CLAUDE.md
+!.claude/settings.json
 !.claude/rules/
 !.claude/commands/
+!.claude/agents/
+!.claude/hooks/
+!.claude/scripts/
 !.claude/statusline.mjs
+!.claude/statusline-v2.mjs
+!.claude/statusline-v2.test.mjs
 .claude/settings.local.json
+
+# skills は公開してよいものだけを列挙する
+# (社内名を含むもの、出所が外部のもの、claude.ai から同期される synced/ は入れない)
+# design / impl / test-cases / test-impl は coding-style リポへの symlink なので末尾に / を付けない
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/daily-report/
+!.claude/skills/decision-coach/
+!.claude/skills/explainer-video/
+!.claude/skills/ghq-migrate/
+!.claude/skills/design
+!.claude/skills/impl
+!.claude/skills/test-cases
+!.claude/skills/test-impl
+
+# 仕事用のプロファイル (CLAUDE_CONFIG_DIR=~/.claude-work) の実行時に作られるもの
+.claude-work/skills/synced/
+.claude-work/**/*.log
+.claude-work/**/.hook.log

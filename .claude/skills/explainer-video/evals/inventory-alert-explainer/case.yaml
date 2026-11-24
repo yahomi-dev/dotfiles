@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: inventory-alert-explainer
+expected_outcome: |
+  ./inventory-video にテンプレートがコピーされ、record.json が data.js (window.RECORD) に変換され、
+  timeline.js が title -> ui (CSV を選んでチェック) -> mech (行が並び、しきい値未満だけが残り、Slack 文になる) -> arch (ブラウザ -> サーバー -> Slack、サーバー -> Slack を focus) -> ui (結果一覧) -> outro (伝えたい 1 文) の順で書かれている。
+  字幕と画面の数字 (行数、下回った件数、しきい値、Slack の文面) は record.json の値と一致し、手書きの数字が無い。
+  node tools/render.mjs sheet で out/sheet.png が生成され、エージェントが画像を開いて確認している。ffmpeg がある環境では out/*.mp4 (1920x1080, 30fps) も生成される。
+context:
+  scaffold_script: place-files.sh

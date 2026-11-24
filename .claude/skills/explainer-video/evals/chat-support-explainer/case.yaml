@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: chat-support-explainer
+expected_outcome: |
+  ./chat-video にテンプレートがコピーされ、record.json が data.js になり、timeline.js が
+  title -> ui (チャット画面に質問を type して送信ボタンを click、ズーム) -> mech (質問 -> 規約検索 -> AI の返事 -> 禁止語チェック を boxes + flow か chips で運ぶ) -> arch (ブラウザ / サーバー / 規約 DB / AI、サーバー <-> AI と サーバー <-> DB を focus) -> ui (返事の吹き出しが show される) -> outro の順。
+  質問文・返事・見つかった規約の数・チェック結果は record.json と一致する。sheet で確認しており、ffmpeg があれば MP4 も生成される。
+context:
+  scaffold_script: place-files.sh

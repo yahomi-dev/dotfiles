@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explainer Video</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="engine/style.css">
+</head>
+<body>
+<div id="viewport"><div id="stage"></div></div>
+<!--
+  data.js     = 実物を 1 回流した記録 (window.RECORD)。字幕や画面の数字はここから取る
+  timeline.js = 動画の中身 (window.TIMELINE)。書き換えるのは基本この 2 つだけ
+  engine/*    = 時刻 t の絵を作る加工機。演出を足すときだけ触る
+-->
+<script src="data.js"></script>
+<script src="timeline.js"></script>
+<script src="engine/util.js"></script>
+<script src="engine/events.js"></script>
+<script src="engine/ui.js"></script>
+<script src="engine/mech.js"></script>
+<script src="engine/arch.js"></script>
+<script src="engine/core.js"></script>
+</body>
+</html>

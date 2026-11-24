@@ -1,0 +1,14 @@
+{
+  "name": "explainer-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "info": "node tools/render.mjs info",
+    "sheet": "node tools/render.mjs sheet",
+    "video": "node tools/render.mjs video"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "playwright-core": "1.61.1"
+  }
+}

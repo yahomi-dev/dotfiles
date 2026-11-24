@@ -24,20 +24,49 @@ ln -sf "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
 
-# Claude Code の設定（既存 ~/.claude/ を壊さず、管理対象だけ symlink）
-mkdir -p "$HOME/.claude"
-ln -sf "$DOTFILES_DIR/.claude/settings.json" "$HOME/.claude/settings.json"
-ln -sf "$DOTFILES_DIR/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
-ln -sfn "$DOTFILES_DIR/.claude/rules" "$HOME/.claude/rules"
-ln -sfn "$DOTFILES_DIR/.claude/skills" "$HOME/.claude/skills"
-ln -sfn "$DOTFILES_DIR/.claude/agents" "$HOME/.claude/agents"
-ln -sfn "$DOTFILES_DIR/.claude/commands" "$HOME/.claude/commands"
-ln -sf "$DOTFILES_DIR/.claude/statusline.mjs" "$HOME/.claude/statusline.mjs"
+# 既存のファイルやディレクトリを壊さずに symlink を張る (実体があるときは警告して飛ばす)
+link() {
+  src="$1"
+  dst="$2"
+  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+    echo "SKIP: $dst は実体があります。中身を確認して退避してから再実行してください"
+    return 0
+  fi
+  ln -sfn "$src" "$dst"
+}
 
-# rules 内の typescript/react/design-policy は ~/ghq の coding-style リポへの相対 symlink
+# Claude Code の設定 (既存の ~/.claude/ を壊さず、管理対象だけ symlink)
+mkdir -p "$HOME/.claude"
+for f in CLAUDE.md settings.json statusline.mjs statusline-v2.mjs; do
+  link "$DOTFILES_DIR/.claude/$f" "$HOME/.claude/$f"
+done
+for d in rules skills agents commands hooks scripts; do
+  link "$DOTFILES_DIR/.claude/$d" "$HOME/.claude/$d"
+done
+
+# 仕事用のプロファイル (CLAUDE_CONFIG_DIR=~/.claude-work、.zshrc の work-claude で起動)
+# CLAUDE.md と rules は通常のプロファイルと共通にする
+mkdir -p "$HOME/.claude-work"
+for f in settings.json hooks skills; do
+  link "$DOTFILES_DIR/.claude-work/$f" "$HOME/.claude-work/$f"
+done
+link "$DOTFILES_DIR/.claude/CLAUDE.md" "$HOME/.claude-work/CLAUDE.md"
+link "$DOTFILES_DIR/.claude/rules" "$HOME/.claude-work/rules"
+
+find "$DOTFILES_DIR/.claude/hooks" "$DOTFILES_DIR/.claude/scripts" "$DOTFILES_DIR/.claude-work/hooks" \
+  -type f \( -name '*.sh' -o -name '*.py' \) -exec chmod +x {} +
+
+# rules と skills の一部は ~/ghq の coding-style リポへの相対 symlink
 if [ ! -d "$HOME/ghq/github.com/yahomi-dev/coding-style" ]; then
-  echo "NOTE: coding-style が未取得のため一部ルールがリンク切れです -> ghq get https://github.com/yahomi-dev/coding-style.git"
+  echo "NOTE: coding-style が未取得のため一部のルールとスキルがリンク切れです -> ghq get https://github.com/yahomi-dev/coding-style.git"
 fi
+
+# MCP サーバ (ユーザのスコープ)。認証が要る社内のサーバは各サービスの手順で追加する
+if command -v claude > /dev/null 2>&1; then
+  claude mcp get context7 > /dev/null 2>&1 || claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp
+fi
+
+# git の global ignore。core.excludesFile を設定すると ~/.config/git/ignore は読まれなくなるので、無視の設定は .gitignore_global に集める
 ln -sf "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
 git config --global core.excludesFile "$HOME/.gitignore_global"
 
