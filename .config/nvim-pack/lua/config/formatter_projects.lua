@@ -23,4 +23,8 @@ return {
       lua = { 'styLua' },
     },
   },
+
+  [vim.fn.expand('~/study/harness-work-flow/data/')] = {
+    enabled = false,
+  },
 }
