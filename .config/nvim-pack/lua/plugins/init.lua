@@ -43,7 +43,7 @@ vim.pack.add {
   'https://github.com/lambdalisue/vim-glyph-palette',
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/lewis6991/gitsigns.nvim',
-  'https://github.com/petertriho/nvim-scrollbar',
+  'https://github.com/echasnovski/mini.map',
   'https://github.com/stevearc/conform.nvim',
 }
 
@@ -62,7 +62,7 @@ safe_require('plugins.config.oil')
 safe_require('plugins.config.fern')
 safe_require('plugins.config.telescope')
 safe_require('plugins.config.gitsigns')
-safe_require('plugins.config.scrollbar')
+safe_require('plugins.config.minimap')
 safe_require('plugins.config.conform')
 
 -- ts-comments は setup のみ（設定ファイル不要）
