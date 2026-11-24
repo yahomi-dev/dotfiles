@@ -3,7 +3,8 @@
     "CLAUDE_CODE_NO_FLICKER": "1",
     "CLAUDE_CODE_THRIFTY_SONIC": "false",
     "EDITOR": "nvim",
-    "NVIM_APPNAME": "nvim-pack"
+    "NVIM_APPNAME": "nvim-pack",
+    "DAILY_REPORT_DIR": "~/memo/ai-agent"
   },
   "attribution": {
     "commit": "",
@@ -24,7 +25,10 @@
       "Read(~/**/credentials.json)",
       "Read(~/**/token.json)",
       "Bash(cat */credentials.json)",
-      "Bash(cat */token.json)"
+      "Bash(cat */token.json)",
+      "Edit(.env)",
+      "Edit(.env.local)",
+      "Edit(.env.*.local)"
     ],
     "defaultMode": "auto"
   },
@@ -40,6 +44,14 @@
             "command": "$HOME/.claude/hooks/deny-ai-trailer.sh"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
       }
     ],
     "SessionStart": [
@@ -51,6 +63,14 @@
             "command": "$HOME/.claude/hooks/after-compact.sh"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
       }
     ],
     "Stop": [
@@ -59,6 +79,84 @@
           {
             "type": "command",
             "command": "python3 $HOME/.claude/hooks/require-japanese.py"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cc-status.sh"
           }
         ]
       }
@@ -87,5 +185,13 @@
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "advisorModel": "fable",
+  "theme": "dark"
 }
