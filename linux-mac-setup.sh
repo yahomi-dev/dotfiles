@@ -53,6 +53,17 @@ done
 link "$DOTFILES_DIR/.claude/CLAUDE.md" "$HOME/.claude-work/CLAUDE.md"
 link "$DOTFILES_DIR/.claude/rules" "$HOME/.claude-work/rules"
 
+# 社内向けのスキルは別のリポジトリ (dot-claude-work) で管理する。clone していなければ飛ばす
+# skills/ の中に張る symlink は .gitignore の対象なので、このリポジトリには入らない
+WORK_SKILLS_DIR="${WORK_SKILLS_DIR:-$HOME/dev/dot-claude-work/skills}"
+if [ -d "$WORK_SKILLS_DIR" ]; then
+  for s in "$WORK_SKILLS_DIR"/*/; do
+    [ -d "$s" ] || continue
+    s="${s%/}"
+    link "$s" "$DOTFILES_DIR/.claude/skills/$(basename "$s")"
+  done
+fi
+
 find "$DOTFILES_DIR/.claude/hooks" "$DOTFILES_DIR/.claude/scripts" "$DOTFILES_DIR/.claude-work/hooks" \
   -type f \( -name '*.sh' -o -name '*.py' \) -exec chmod +x {} +
 
