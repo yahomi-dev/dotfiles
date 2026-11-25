@@ -29,7 +29,6 @@ packer_compiled.lua
 
 # skills は公開してよいものだけを列挙する
 # (社内名を含むもの、出所が外部のもの、claude.ai から同期される synced/ は入れない)
-# design / impl / test-cases / test-impl は coding-style リポへの symlink なので末尾に / を付けない
 !.claude/skills/
 .claude/skills/*
 !.claude/skills/aws-arch-diagram/
@@ -42,10 +41,6 @@ packer_compiled.lua
 # AWS の公式アイコンは再配布しない (scripts/fetch_icons.sh で公式の配布物から取得する)
 .claude/skills/aws-arch-diagram/assets/icons/
 __pycache__/
-!.claude/skills/design
-!.claude/skills/impl
-!.claude/skills/test-cases
-!.claude/skills/test-impl
 
 # 仕事用のプロファイル (CLAUDE_CONFIG_DIR=~/.claude-work) の実行時に作られるもの
 .claude-work/skills/synced/
