@@ -1,0 +1,1 @@
+../../../ghq/github.com/yahomi-dev/coding-style/scripts/hooks/deny-env-access.ts

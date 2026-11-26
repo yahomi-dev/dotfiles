@@ -26,9 +26,20 @@
       "Read(~/**/token.json)",
       "Bash(cat */credentials.json)",
       "Bash(cat */token.json)",
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.env.*.local)",
+      "Read(.env.development)",
+      "Read(.env.staging)",
+      "Read(.env.production)",
+      "Read(.env.test)",
       "Edit(.env)",
       "Edit(.env.local)",
-      "Edit(.env.*.local)"
+      "Edit(.env.*.local)",
+      "Edit(.env.development)",
+      "Edit(.env.staging)",
+      "Edit(.env.production)",
+      "Edit(.env.test)"
     ],
     "defaultMode": "auto"
   },
@@ -42,6 +53,15 @@
           {
             "type": "command",
             "command": "$HOME/.claude/hooks/deny-ai-trailer.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Edit|Write|NotebookEdit|Grep|Glob|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node $HOME/.claude/hooks/deny-env-access.ts"
           }
         ]
       },
